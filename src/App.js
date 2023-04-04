@@ -28,12 +28,19 @@ function App() {
     setText("");
   };
 
+  const handleDelete = (deleteId) => {
+    setDontList((prev) => prev.filter(({ id }) => id !== deleteId));
+  };
+
   return (
     <div className="App">
       <header className="App-header">TO DON'T LIST</header>
       <ul>
         {dontList.map(({ id, todo }) => (
-          <li key={id}>{todo}</li>
+          <li key={id}>
+            <span>{todo} </span>
+            <button onClick={() => handleDelete(id)}>delete</button>
+          </li>
         ))}
       </ul>
       <form onSubmit={handleAdd}>
