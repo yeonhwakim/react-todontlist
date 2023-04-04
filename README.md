@@ -21,10 +21,10 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 
 #### TO DON'T LIST
 
-  1. - [ ] CREATE - TO DON'T LIST
-  2. - [ ] READ - TO DON'T LIST
-  3. - [ ] UPDATE - TO DON'T LIST
-  4. - [ ] DELETE - TO DON'T LIST
+  1. - [X] ~CREATE - TO DON'T LIST~ 20230404
+  2. - [X] ~READ - TO DON'T LIST~ 20230404
+  3. - [X] ~UPDATE - TO DON'T LIST~ 20230404
+  4. - [X] ~DELETE - TO DON'T LIST~ 20230404
   5. - [ ] PERMANENTLY DELETE after 3 months  
 
 
