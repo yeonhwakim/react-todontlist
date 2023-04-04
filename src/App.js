@@ -8,6 +8,26 @@ function App() {
     { id: 3, todo: "씻기", startYn: false, doneYn: false },
   ]);
 
+  const [text, setText] = useState("");
+
+  const handleInputText = (e) => {
+    setText(e.target.value);
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    setDontList((prev) => [
+      ...prev,
+      {
+        id: prev.length + 1,
+        todo: text,
+        startYn: false,
+        doneYn: false,
+      },
+    ]);
+    setText("");
+  };
+
   return (
     <div className="App">
       <header className="App-header">TO DON'T LIST</header>
@@ -16,6 +36,15 @@ function App() {
           <li key={id}>{todo}</li>
         ))}
       </ul>
+      <form onSubmit={handleAdd}>
+        <input
+          type="text"
+          placeholder="Add to don't list"
+          value={text}
+          onChange={handleInputText}
+        />
+        <button type="submit">입력</button>
+      </form>
     </div>
   );
 }
