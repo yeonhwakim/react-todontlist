@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "todo": "리액트 공부하기",
+    "updateTodo": "리액트 공부하기",
+    "updateYn": false,
+    "startYn": false,
+    "doneYn": false
+  },
+  {
+    "id": 2,
+    "todo": "설거지 하기",
+    "updateTodo": "설거지 하기",
+    "updateYn": false,
+    "startYn": false,
+    "doneYn": false
+  },
+  {
+    "id": 3,
+    "todo": "씻기",
+    "updateTodo": "씻기",
+    "updateYn": false,
+    "startYn": false,
+    "doneYn": false
+  }
+]

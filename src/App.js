@@ -1,33 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [dontList, setDontList] = useState([
-    {
-      id: 1,
-      todo: "리액트 공부하기",
-      updateTodo: "리액트 공부하기",
-      updateYn: false,
-      startYn: false,
-      doneYn: false,
-    },
-    {
-      id: 2,
-      todo: "설거지 하기",
-      updateTodo: "설거지 하기",
-      updateYn: false,
-      startYn: false,
-      doneYn: false,
-    },
-    {
-      id: 3,
-      todo: "씻기",
-      updateTodo: "씻기",
-      updateYn: false,
-      startYn: false,
-      doneYn: false,
-    },
-  ]);
+  const [dontList, setDontList] = useState([]);
+
+  useEffect(() => {
+    fetch(`data/todos.json`)
+      .then((res) => res.json())
+      .then((data) => {
+        setDontList(data);
+      })
+      .catch((e) => console.log(e));
+  }, []);
 
   const [text, setText] = useState("");
 
@@ -121,44 +105,46 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">TO DON'T LIST</header>
-      <ul>
-        {dontList.map(
-          ({ id, todo, updateTodo, updateYn, startYn }) =>
-            !startYn && (
-              <li key={id}>
-                {!updateYn && (
-                  <div>
-                    <input
-                      type="checkbox"
-                      onChange={(e) => handleCheck(e, id)}
-                    />
-                    <span>{todo}</span>
-                    <button onClick={() => handleDelete(id)}>delete</button>
-                    <button onClick={() => handleUpdateState(id)}>
-                      update
-                    </button>
-                  </div>
-                )}
-                {updateYn && (
-                  <form onSubmit={(e) => handleUpdate(e, id)}>
-                    <input
-                      type="text"
-                      value={updateTodo}
-                      onChange={(e) => handleUpdateTxt(e, id)}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => handleCancelUpdate(id)}
-                    >
-                      cancel
-                    </button>
-                    <button type="submit">update</button>
-                  </form>
-                )}
-              </li>
-            )
-        )}
-      </ul>
+      {dontList && (
+        <ul>
+          {dontList.map(
+            ({ id, todo, updateTodo, updateYn, startYn }) =>
+              !startYn && (
+                <li key={id}>
+                  {!updateYn && (
+                    <div>
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handleCheck(e, id)}
+                      />
+                      <span>{todo}</span>
+                      <button onClick={() => handleDelete(id)}>delete</button>
+                      <button onClick={() => handleUpdateState(id)}>
+                        update
+                      </button>
+                    </div>
+                  )}
+                  {updateYn && (
+                    <form onSubmit={(e) => handleUpdate(e, id)}>
+                      <input
+                        type="text"
+                        value={updateTodo}
+                        onChange={(e) => handleUpdateTxt(e, id)}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleCancelUpdate(id)}
+                      >
+                        cancel
+                      </button>
+                      <button type="submit">update</button>
+                    </form>
+                  )}
+                </li>
+              )
+          )}
+        </ul>
+      )}
       <form onSubmit={handleAdd}>
         <input
           type="text"
