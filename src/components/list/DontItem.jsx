@@ -1,4 +1,5 @@
 import React from "react";
+import UpdateForm from "../form/UpdateForm";
 
 function DontList({
   id,
@@ -23,17 +24,13 @@ function DontList({
         </div>
       )}
       {updateYn && (
-        <form onSubmit={(e) => handleUpdate(e, id)}>
-          <input
-            type="text"
-            value={updateTodo}
-            onChange={(e) => handleUpdateTxt(e, id)}
-          />
-          <button type="button" onClick={() => handleCancelUpdate(id)}>
-            cancel
-          </button>
-          <button type="submit">update</button>
-        </form>
+        <UpdateForm
+          id={id}
+          updateTodo={updateTodo}
+          handleUpdate={handleUpdate}
+          handleUpdateTxt={handleUpdateTxt}
+          handleCancelUpdate={handleCancelUpdate}
+        />
       )}
     </li>
   );
