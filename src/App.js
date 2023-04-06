@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import DontList from "./components/list/DontList";
+import AddForm from "./components/form/AddForm";
 
 function App() {
   const [dontList, setDontList] = useState([]);
@@ -15,25 +16,17 @@ function App() {
       .catch((e) => console.log(e));
   }, []);
 
-  const [text, setText] = useState("");
-
-  const handleInputText = (e) => {
-    setText(e.target.value);
-  };
-
-  const handleAdd = (e) => {
-    e.preventDefault();
+  const handleAdd = (newTodo) => {
     setDontList((prev) => [
       ...prev,
       {
         id: prev.length + 1,
-        todo: text,
-        updateTodo: text,
+        todo: newTodo,
+        updateTodo: newTodo,
         startYn: false,
         doneYn: false,
       },
     ]);
-    setText("");
   };
 
   const handleDelete = (deleteId) => {
@@ -118,15 +111,7 @@ function App() {
           handleCancelUpdate={handleCancelUpdate}
         />
       )}
-      <form onSubmit={handleAdd}>
-        <input
-          type="text"
-          placeholder="Add to don't list"
-          value={text}
-          onChange={handleInputText}
-        />
-        <button type="submit">입력</button>
-      </form>
+      <AddForm handleAdd={handleAdd} />
     </div>
   );
 }
