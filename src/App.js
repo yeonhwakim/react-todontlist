@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/header/Header";
 
 function App() {
   const [dontList, setDontList] = useState([]);
@@ -104,7 +105,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">TO DON'T LIST</header>
+      <Header title={"TO DON'T LIST"} />
       {dontList && (
         <ul>
           {dontList.map(
