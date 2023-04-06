@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
+import DontList from "./components/list/DontList";
 
 function App() {
   const [dontList, setDontList] = useState([]);
@@ -107,44 +108,15 @@ function App() {
     <div className="App">
       <Header title={"TO DON'T LIST"} />
       {dontList && (
-        <ul>
-          {dontList.map(
-            ({ id, todo, updateTodo, updateYn, startYn }) =>
-              !startYn && (
-                <li key={id}>
-                  {!updateYn && (
-                    <div>
-                      <input
-                        type="checkbox"
-                        onChange={(e) => handleCheck(e, id)}
-                      />
-                      <span>{todo}</span>
-                      <button onClick={() => handleDelete(id)}>delete</button>
-                      <button onClick={() => handleUpdateState(id)}>
-                        update
-                      </button>
-                    </div>
-                  )}
-                  {updateYn && (
-                    <form onSubmit={(e) => handleUpdate(e, id)}>
-                      <input
-                        type="text"
-                        value={updateTodo}
-                        onChange={(e) => handleUpdateTxt(e, id)}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => handleCancelUpdate(id)}
-                      >
-                        cancel
-                      </button>
-                      <button type="submit">update</button>
-                    </form>
-                  )}
-                </li>
-              )
-          )}
-        </ul>
+        <DontList
+          dontList={dontList}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+          handleUpdateState={handleUpdateState}
+          handleUpdate={handleUpdate}
+          handleUpdateTxt={handleUpdateTxt}
+          handleCancelUpdate={handleCancelUpdate}
+        />
       )}
       <form onSubmit={handleAdd}>
         <input
