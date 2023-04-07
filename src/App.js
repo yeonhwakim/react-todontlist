@@ -1,17 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import DontList from "./components/list/DontList";
 import AddForm from "./components/form/AddForm";
+import todontlistReducer from "./reducers/todontlist-reducer";
 
 function App() {
   const [dontList, setDontList] = useState([]);
+  const [list, dispatch] = useReducer(todontlistReducer, []);
 
   useEffect(() => {
     fetch(`data/todos.json`)
       .then((res) => res.json())
       .then((data) => {
-        setDontList(data);
+        dispatch({ type: "fetch", todos: data });
       })
       .catch((e) => console.log(e));
   }, []);
@@ -100,9 +102,9 @@ function App() {
   return (
     <div className="App">
       <Header title={"TO DON'T LIST"} />
-      {dontList && (
+      {list && (
         <DontList
-          dontList={dontList}
+          dontList={list}
           handleCheck={handleCheck}
           handleDelete={handleDelete}
           handleUpdateState={handleUpdateState}
