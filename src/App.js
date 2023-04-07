@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
 import DontList from "./components/list/DontList";
@@ -6,7 +6,6 @@ import AddForm from "./components/form/AddForm";
 import todontlistReducer from "./reducers/todontlist-reducer";
 
 function App() {
-  const [dontList, setDontList] = useState([]);
   const [list, dispatch] = useReducer(todontlistReducer, []);
 
   useEffect(() => {
