@@ -19,20 +19,11 @@ function App() {
   }, []);
 
   const handleAdd = (newTodo) => {
-    setDontList((prev) => [
-      ...prev,
-      {
-        id: prev.length + 1,
-        todo: newTodo,
-        updateTodo: newTodo,
-        startYn: false,
-        doneYn: false,
-      },
-    ]);
+    dispatch({ type: "added", newTodo });
   };
 
-  const handleDelete = (deleteId) => {
-    setDontList((prev) => prev.filter(({ id }) => id !== deleteId));
+  const handleDelete = (deletedId) => {
+    dispatch({ type: "deleted", deletedId });
   };
 
   const handleUpdateState = (updateId) => {
