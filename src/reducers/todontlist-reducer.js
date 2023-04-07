@@ -53,6 +53,13 @@ export default function todontlistReducer(todontlist, action) {
           : item;
       });
     }
+    case "checked": {
+      const { checkedId, checked } = action;
+      return todontlist.map((item) => {
+        const { id } = item;
+        return checkedId === id ? { ...item, startYn: checked } : item;
+      });
+    }
     default: {
       throw Error("Invalid action type");
     }

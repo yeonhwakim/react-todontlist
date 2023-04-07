@@ -44,17 +44,7 @@ function App() {
   };
 
   const handleCheck = (e, checkedId) => {
-    const { checked } = e.target;
-
-    setDontList((prev) =>
-      prev.map((item) => {
-        const { id } = item;
-        if (checkedId === id) {
-          return { ...item, startYn: checked };
-        }
-        return item;
-      })
-    );
+    dispatch({ type: "checked", checkedId, checked: e.target.checked });
   };
 
   return (
