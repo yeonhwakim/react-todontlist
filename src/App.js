@@ -26,54 +26,21 @@ function App() {
     dispatch({ type: "deleted", deletedId });
   };
 
-  const handleUpdateState = (updateId) => {
-    setDontList((prev) =>
-      prev.map((item) => {
-        const { id } = item;
-        if (updateId === id) {
-          return { ...item, updateYn: true };
-        }
-        return item;
-      })
-    );
+  const handleUpdateState = (updatedId) => {
+    dispatch({ type: "updatedState", updatedId });
   };
 
-  const handleUpdateTxt = (e, updateId) => {
-    setDontList((prev) =>
-      prev.map((item) => {
-        const { id } = item;
-        if (updateId === id) {
-          return { ...item, updateTodo: e.target.value };
-        }
-        return item;
-      })
-    );
+  const handleUpdateTxt = (e, updatedId) => {
+    dispatch({ type: "updatedTxt", updatedId, value: e.target.value });
   };
 
-  const handleCancelUpdate = (updateId) => {
-    setDontList((prev) =>
-      prev.map((item) => {
-        const { id, todo } = item;
-        if (updateId === id) {
-          return { ...item, updateTodo: todo, updateYn: false };
-        }
-        return item;
-      })
-    );
+  const handleCancelUpdate = (canceledId) => {
+    dispatch({ type: "canceledUpdate", canceledId });
   };
 
-  const handleUpdate = (e, updateId) => {
+  const handleUpdate = (e, updatedId) => {
     e.preventDefault();
-
-    setDontList((prev) =>
-      prev.map((item) => {
-        const { id, updateTodo } = item;
-        if (updateId === id) {
-          return { ...item, todo: updateTodo, updateYn: false };
-        }
-        return item;
-      })
-    );
+    dispatch({ type: "updated", updatedId });
   };
 
   const handleCheck = (e, checkedId) => {

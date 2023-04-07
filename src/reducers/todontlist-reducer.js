@@ -21,6 +21,38 @@ export default function todontlistReducer(todontlist, action) {
       const { deletedId } = action;
       return todontlist.filter(({ id }) => id !== deletedId);
     }
+    case "updatedState": {
+      const { updatedId } = action;
+      return todontlist.map((item) => {
+        const { id } = item;
+        return updatedId === id ? { ...item, updateYn: true } : item;
+      });
+    }
+    case "updatedTxt": {
+      const { value, updatedId } = action;
+      return todontlist.map((item) => {
+        const { id } = item;
+        return updatedId === id ? { ...item, updateTodo: value } : item;
+      });
+    }
+    case "canceledUpdate": {
+      const { canceledId } = action;
+      return todontlist.map((item) => {
+        const { id, todo } = item;
+        return canceledId === id
+          ? { ...item, updateTodo: todo, updateYn: false }
+          : item;
+      });
+    }
+    case "updated": {
+      const { updatedId } = action;
+      return todontlist.map((item) => {
+        const { id, updateTodo } = item;
+        return updatedId === id
+          ? { ...item, todo: updateTodo, updateYn: false }
+          : item;
+      });
+    }
     default: {
       throw Error("Invalid action type");
     }
