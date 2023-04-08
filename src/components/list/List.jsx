@@ -13,13 +13,10 @@ function DontList({
   return (
     <>
       <ul>
-        {list.map(({ id, todo, updateTodo, updateYn }) => (
+        {list.map((item) => (
           <Item
-            key={id}
-            id={id}
-            todo={todo}
-            updateTodo={updateTodo}
-            updateYn={updateYn}
+            key={item.id}
+            item={item}
             handleCheck={handleCheck}
             handleDelete={handleDelete}
             handleUpdateState={handleUpdateState}
