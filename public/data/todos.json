@@ -12,7 +12,7 @@
     "todo": "설거지 하기",
     "updateTodo": "설거지 하기",
     "updateYn": false,
-    "startYn": false,
+    "startYn": true,
     "doneYn": false
   },
   {

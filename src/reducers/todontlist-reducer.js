@@ -1,15 +1,20 @@
+import { v4 as uuidv4 } from "uuid";
+
 export default function todontlistReducer(todontlist, action) {
   switch (action.type) {
     case "fetch": {
       const { todos } = action;
-      return [...todos];
+      return [...todos.filter((item) => !item.startYn && !item.doneYn)];
+    }
+    case "setTodontList": {
+      return [...todontlist.filter((item) => !item.startYn && !item.doneYn)];
     }
     case "added": {
       const { newTodo } = action;
       return [
         ...todontlist,
         {
-          id: todontlist.length + 1,
+          id: uuidv4(),
           todo: newTodo,
           updateTodo: newTodo,
           startYn: false,

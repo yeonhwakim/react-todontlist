@@ -2,10 +2,7 @@ import React from "react";
 import UpdateForm from "../form/UpdateForm";
 
 function DontList({
-  id,
-  todo,
-  updateTodo,
-  updateYn,
+  item: { id, todo, updateTodo, updateYn },
   handleCheck,
   handleDelete,
   handleUpdateState,
