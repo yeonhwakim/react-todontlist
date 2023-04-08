@@ -44,6 +44,7 @@ function App() {
 
   const handleCheck = (e, checkedId) => {
     dispatch({ type: "checked", checkedId, checked: e.target.checked });
+    dispatch({ type: "setTodontList", checkedId, checked: e.target.checked });
   };
 
   return (

@@ -13,24 +13,21 @@ function DontList({
   return (
     <>
       <ul>
-        {dontList.map(
-          ({ id, todo, updateTodo, updateYn, startYn }) =>
-            !startYn && (
-              <DontItem
-                key={id}
-                id={id}
-                todo={todo}
-                updateTodo={updateTodo}
-                updateYn={updateYn}
-                handleCheck={handleCheck}
-                handleDelete={handleDelete}
-                handleUpdateState={handleUpdateState}
-                handleUpdate={handleUpdate}
-                handleUpdateTxt={handleUpdateTxt}
-                handleCancelUpdate={handleCancelUpdate}
-              />
-            )
-        )}
+        {dontList.map(({ id, todo, updateTodo, updateYn }) => (
+          <DontItem
+            key={id}
+            id={id}
+            todo={todo}
+            updateTodo={updateTodo}
+            updateYn={updateYn}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+            handleUpdateState={handleUpdateState}
+            handleUpdate={handleUpdate}
+            handleUpdateTxt={handleUpdateTxt}
+            handleCancelUpdate={handleCancelUpdate}
+          />
+        ))}
       </ul>
     </>
   );
