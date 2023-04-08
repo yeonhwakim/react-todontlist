@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export default function todontlistReducer(todontlist, action) {
   switch (action.type) {
     case "fetch": {
@@ -12,7 +14,7 @@ export default function todontlistReducer(todontlist, action) {
       return [
         ...todontlist,
         {
-          id: todontlist.length + 1,
+          id: uuidv4(),
           todo: newTodo,
           updateTodo: newTodo,
           startYn: false,
