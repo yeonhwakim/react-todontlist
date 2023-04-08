@@ -49,19 +49,24 @@ function App() {
 
   return (
     <div className="App">
-      <Header title={"TO DON'T LIST"} />
-      {todontlist && (
-        <List
-          list={todontlist}
-          handleCheck={handleCheck}
-          handleDelete={handleDelete}
-          handleUpdateState={handleUpdateState}
-          handleUpdate={handleUpdate}
-          handleUpdateTxt={handleUpdateTxt}
-          handleCancelUpdate={handleCancelUpdate}
-        />
-      )}
-      <AddForm handleAdd={handleAdd} />
+      <div>
+        <Header title={"TO DON'T LIST"} />
+        {todontlist && (
+          <List
+            list={todontlist}
+            handleCheck={handleCheck}
+            handleDelete={handleDelete}
+            handleUpdateState={handleUpdateState}
+            handleUpdate={handleUpdate}
+            handleUpdateTxt={handleUpdateTxt}
+            handleCancelUpdate={handleCancelUpdate}
+          />
+        )}
+        <AddForm handleAdd={handleAdd} />
+      </div>
+      <div>
+        <Header title={"TO DO LIST"} />
+      </div>
     </div>
   );
 }
