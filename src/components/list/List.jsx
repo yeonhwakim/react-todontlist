@@ -1,8 +1,8 @@
 import React from "react";
-import DontItem from "./DontItem";
+import Item from "./Item";
 
 function DontList({
-  dontList,
+  list,
   handleCheck,
   handleDelete,
   handleUpdateState,
@@ -13,8 +13,8 @@ function DontList({
   return (
     <>
       <ul>
-        {dontList.map(({ id, todo, updateTodo, updateYn }) => (
-          <DontItem
+        {list.map(({ id, todo, updateTodo, updateYn }) => (
+          <Item
             key={id}
             id={id}
             todo={todo}

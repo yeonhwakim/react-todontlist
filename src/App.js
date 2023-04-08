@@ -1,12 +1,12 @@
 import { useEffect, useReducer } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
-import DontList from "./components/list/DontList";
+import List from "./components/list/List";
 import AddForm from "./components/form/AddForm";
 import todontlistReducer from "./reducers/todontlist-reducer";
 
 function App() {
-  const [list, dispatch] = useReducer(todontlistReducer, []);
+  const [todontlist, dispatch] = useReducer(todontlistReducer, []);
 
   useEffect(() => {
     fetch(`data/todos.json`)
@@ -50,9 +50,9 @@ function App() {
   return (
     <div className="App">
       <Header title={"TO DON'T LIST"} />
-      {list && (
-        <DontList
-          dontList={list}
+      {todontlist && (
+        <List
+          list={todontlist}
           handleCheck={handleCheck}
           handleDelete={handleDelete}
           handleUpdateState={handleUpdateState}
