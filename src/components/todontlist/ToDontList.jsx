@@ -47,7 +47,7 @@ function ToDontList() {
   };
 
   return (
-    <>
+    <div>
       <Header title={"TO DON'T LIST"} />
       {todontlist && (
         <List
@@ -61,7 +61,7 @@ function ToDontList() {
         />
       )}
       <AddForm handleAdd={handleAdd} />
-    </>
+    </div>
   );
 }
 
