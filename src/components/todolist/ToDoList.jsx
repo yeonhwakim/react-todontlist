@@ -3,7 +3,7 @@ import todolistReducer from "../../reducers/todolist-reducer";
 import Header from "../header/Header";
 import List from "../list/List";
 
-function ToDontList() {
+function ToDoList() {
   const [todolist, dispatch] = useReducer(todolistReducer, []);
 
   useEffect(() => {
@@ -36,12 +36,18 @@ function ToDontList() {
     dispatch({ type: "updated", updatedId });
   };
 
+  const handleCheck = (e, checkedId) => {
+    dispatch({ type: "checked", checkedId, checked: e.target.checked });
+    dispatch({ type: "setTodoList", checkedId, checked: e.target.checked });
+  };
+
   return (
     <div>
       <Header title={"TO DO LIST"} />
       {todolist && (
         <List
           list={todolist}
+          handleCheck={handleCheck}
           handleDelete={handleDelete}
           handleUpdateState={handleUpdateState}
           handleUpdate={handleUpdate}
@@ -53,4 +59,4 @@ function ToDontList() {
   );
 }
 
-export default ToDontList;
+export default ToDoList;

@@ -4,6 +4,9 @@ export default function todolistReducer(todolist, action) {
       const { todos } = action;
       return [...todos.filter((item) => item.startYn && !item.doneYn)];
     }
+    case "setTodoList": {
+      return [...todolist.filter((item) => item.startYn && !item.doneYn)];
+    }
     case "deleted": {
       const { deletedId } = action;
       return todolist.filter(({ id }) => id !== deletedId);
@@ -38,6 +41,13 @@ export default function todolistReducer(todolist, action) {
         return updatedId === id
           ? { ...item, todo: updateTodo, updateYn: false }
           : item;
+      });
+    }
+    case "checked": {
+      const { checkedId, checked } = action;
+      return todolist.map((item) => {
+        const { id } = item;
+        return checkedId === id ? { ...item, doneYn: checked } : item;
       });
     }
     default: {
