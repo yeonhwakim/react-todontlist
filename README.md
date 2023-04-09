@@ -22,27 +22,33 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 #### TO DON'T LIST
 
   1. - [X] ~CREATE - TO DON'T LIST~ 20230404
-       - [X] ~FILTER - TO DON;T LIST ~ 20230405
+       - [X] ~FILTER - TO DON'T LIST ~ 20230405
   2. - [X] ~READ - TO DON'T LIST~ 20230404
   3. - [X] ~UPDATE - TO DON'T LIST~ 20230404
   4. - [X] ~DELETE - TO DON'T LIST~ 20230404
   5. - [ ] PERMANENTLY DELETE after 3 months  
+  6. - [ ] CHECKBOX - MOVE TO 'TO DP LSIT'
+  7. - [ ] CHECKBOX - ONLY THREE ITEMS
 
 
  #### TO DO LIST
 
-  1. - [ ] ADD - TO DO LIST => MOVE FROM TO DON'T LIST
-  2. - [ ] READ - TO DO LIST
-  3. - [ ] UPDATE - TO DO LIST
-  4. - [ ] DELETE - TO DO LIST => MOVE TO 'TO DON'T LIST'  
+  1. - [X] ~ADD - TO DO LIST~
+  2. - [X] ~READ - TO DO LIST~
+  3. - [X] ~UPDATE - TO DO LIST~
+  4. - [X] ~DELETE - TO DO LIST~
+  5. - [ ] MOVE TO 'TO DON'T LIST'
+  6. - [ ] CHECKBOX - MOVE TO 'DONE LSIT'
+  7. - [ ] CHECKBOX - AUTO MOVE FROM 'TO DON'T LIST'
 
 
 ####  DONE LIST
 
-  1. - [ ] ADD - DONE LIST => MOVE FROM TO DO LIST
-  2. - [ ] READ - DONE LIST
-  3. - [ ] UPDATE - DONE LIST
-  4. - [ ] DELETE - DONE LIST => MOVE TO 'TO DO LIST'  
+  1. - [X] ~ADD - DONE LIST
+  2. - [X] ~READ - DONE LIST~
+  3. - [X] ~UPDATE - DONE LIST~
+  4. - [X] ~DELETE - DONE LIST~
+  5. - [ ] MOVE TO 'TO DO LIST'
 
 
 ####  ETC
