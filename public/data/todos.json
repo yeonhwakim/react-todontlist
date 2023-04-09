@@ -20,6 +20,14 @@
     "todo": "씻기",
     "updateTodo": "씻기",
     "updateYn": false,
+    "startYn": true,
+    "doneYn": true
+  },
+  {
+    "id": 3,
+    "todo": "숙면",
+    "updateTodo": "숙면",
+    "updateYn": false,
     "startYn": false,
     "doneYn": false
   }
