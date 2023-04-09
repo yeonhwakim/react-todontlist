@@ -2,7 +2,7 @@ import React from "react";
 import UpdateForm from "../form/UpdateForm";
 
 function DontList({
-  item: { id, todo, updateTodo, updateYn },
+  item: { id, todo, updateTodo, updateYn, doneYn },
   handleCheck,
   handleDelete,
   handleUpdateState,
@@ -14,7 +14,9 @@ function DontList({
     <li>
       {!updateYn && (
         <div>
-          <input type="checkbox" onChange={(e) => handleCheck(e, id)} />
+          {!doneYn && (
+            <input type="checkbox" onChange={(e) => handleCheck(e, id)} />
+          )}
           <span>{todo}</span>
           <button onClick={() => handleDelete(id)}>delete</button>
           <button onClick={() => handleUpdateState(id)}>update</button>
