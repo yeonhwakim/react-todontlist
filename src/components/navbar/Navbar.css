@@ -1,0 +1,17 @@
+nav {
+  display: flex;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  padding: 0.5rem;
+}
+
+nav ul li a {
+  font-size: 2rem;
+  font-weight: bold;
+}

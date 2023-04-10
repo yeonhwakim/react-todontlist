@@ -1,14 +1,12 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import ToDontList from "./components/todontlist/ToDontList";
-import ToDoList from "./components/todolist/ToDoList";
-import DoneList from "./components/donelist/DoneList";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
   return (
     <div className="App">
-      <ToDontList />
-      <ToDoList />
-      <DoneList />
+      <NavBar />
+      <Outlet />
     </div>
   );
 }

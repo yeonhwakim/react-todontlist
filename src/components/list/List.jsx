@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "./Item";
 
-function DontList({
+function List({
   list,
   handleCheck,
   handleDelete,
@@ -30,4 +30,4 @@ function DontList({
   );
 }
 
-export default DontList;
+export default List;
