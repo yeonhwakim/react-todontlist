@@ -1,7 +1,7 @@
 import React from "react";
 import UpdateForm from "../form/UpdateForm";
 
-function DontList({
+function Item({
   item: { id, todo, updateTodo, updateYn, doneYn },
   handleCheck,
   handleDelete,
@@ -35,4 +35,4 @@ function DontList({
   );
 }
 
-export default DontList;
+export default Item;
