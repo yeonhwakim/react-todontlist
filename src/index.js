@@ -7,11 +7,13 @@ import reportWebVitals from "./reportWebVitals";
 import ToDontList from "./components/todontlist/ToDontList";
 import ToDoList from "./components/todolist/ToDoList";
 import DoneList from "./components/donelist/DoneList";
+import ErrorPage from "./components/erropage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "todontList",
