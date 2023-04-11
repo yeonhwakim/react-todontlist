@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { setLocalStoage } from "../utils/localStorage";
 
 export default function todontlistReducer(todontlist, action) {
   switch (action.type) {
@@ -11,6 +12,18 @@ export default function todontlistReducer(todontlist, action) {
     }
     case "added": {
       const { newTodo } = action;
+
+      setLocalStoage([
+        ...todontlist,
+        {
+          id: uuidv4(),
+          todo: newTodo,
+          updateTodo: newTodo,
+          startYn: false,
+          doneYn: false,
+        },
+      ]);
+
       return [
         ...todontlist,
         {

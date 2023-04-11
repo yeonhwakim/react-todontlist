@@ -3,17 +3,14 @@ import todontlistReducer from "../../reducers/todontlist-reducer";
 import Header from "../header/Header";
 import List from "../list/List";
 import AddForm from "../form/AddForm";
+import { getLocalStoage } from "../../utils/localStorage";
 
 function ToDontList() {
   const [todontlist, dispatch] = useReducer(todontlistReducer, []);
 
   useEffect(() => {
-    fetch(`data/todos.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "fetch", todos: data });
-      })
-      .catch((e) => console.log(e));
+    const todos = getLocalStoage("todos");
+    dispatch({ type: "fetch", todos });
   }, []);
 
   const handleAdd = (newTodo) => {
