@@ -1,19 +1,16 @@
 import { useEffect, useReducer } from "react";
-import todolistReducer from "../../reducers/todolist-reducer";
+import todosReducer from "../../reducers/todos-reducer";
 import Header from "../header/Header";
 import List from "../list/List";
+import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
+import { getFilterdList } from "../../utils/filterList";
 
 function ToDoList() {
-  const [todolist, dispatch] = useReducer(todolistReducer, []);
+  const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
 
   useEffect(() => {
-    fetch(`data/todos.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "fetch", todos: data });
-      })
-      .catch((e) => console.log(e));
-  }, []);
+    setLocalStoage(todos);
+  }, [todos]);
 
   const handleDelete = (deletedId) => {
     dispatch({ type: "deleted", deletedId });
@@ -37,9 +34,13 @@ function ToDoList() {
   };
 
   const handleCheck = (e, checkedId) => {
-    dispatch({ type: "checked", checkedId, checked: e.target.checked });
-    dispatch({ type: "setTodoList", checkedId, checked: e.target.checked });
+    dispatch({ type: "checkedDone", checkedId, checked: e.target.checked });
   };
+
+  const todolist = getFilterdList({
+    list: todos,
+    filterName: "todolist",
+  });
 
   return (
     <div>
