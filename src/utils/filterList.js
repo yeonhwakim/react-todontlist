@@ -6,6 +6,9 @@ export function getFilterdList({ list, filterName }) {
     if (filterName === "todolist") {
       return startYn && !doneYn;
     }
-    return startYn && doneYn;
+    if (filterName === "donelist") {
+      return startYn && doneYn;
+    }
+    return [];
   });
 }
