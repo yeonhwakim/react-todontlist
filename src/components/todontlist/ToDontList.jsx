@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import todontlistReducer from "../../reducers/todontlist-reducer";
+import todosReducer from "../../reducers/todos-reducer";
 import Header from "../header/Header";
 import List from "../list/List";
 import AddForm from "../form/AddForm";
@@ -7,14 +7,11 @@ import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import { getFilterdList } from "../../utils/filterList";
 
 function ToDontList() {
-  const [todontlist, dispatch] = useReducer(
-    todontlistReducer,
-    getLocalStoage("todos")
-  );
+  const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
 
   useEffect(() => {
-    setLocalStoage(todontlist);
-  }, [todontlist]);
+    setLocalStoage(todos);
+  }, [todos]);
 
   const handleAdd = (newTodo) => {
     dispatch({ type: "added", newTodo });
@@ -42,20 +39,20 @@ function ToDontList() {
   };
 
   const handleCheck = (e, checkedId) => {
-    dispatch({ type: "checked", checkedId, checked: e.target.checked });
+    dispatch({ type: "checkedStart", checkedId, checked: e.target.checked });
   };
 
-  const filteredList = getFilterdList({
-    list: todontlist,
+  const todontlist = getFilterdList({
+    list: todos,
     filterName: "todontlist",
   });
 
   return (
     <div>
       <Header title={"TO DON'T LIST"} />
-      {filteredList && (
+      {todontlist && (
         <List
-          list={filteredList}
+          list={todontlist}
           handleCheck={handleCheck}
           handleDelete={handleDelete}
           handleUpdateState={handleUpdateState}

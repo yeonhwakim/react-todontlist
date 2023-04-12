@@ -1,19 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
 
-export default function todontlistReducer(todontlist, action) {
+export default function todosReducer(todos, action) {
   switch (action.type) {
-    case "fetch": {
-      const { todos } = action;
-      return [...todos.filter((item) => !item.startYn && !item.doneYn)];
-    }
-    case "setTodontList": {
-      return [...todontlist.filter((item) => !item.startYn && !item.doneYn)];
-    }
     case "added": {
       const { newTodo } = action;
 
       return [
-        ...todontlist,
+        ...todos,
         {
           id: uuidv4(),
           todo: newTodo,
@@ -25,25 +18,29 @@ export default function todontlistReducer(todontlist, action) {
     }
     case "deleted": {
       const { deletedId } = action;
-      return todontlist.filter(({ id }) => id !== deletedId);
+
+      return todos.filter(({ id }) => id !== deletedId);
     }
     case "updatedState": {
       const { updatedId } = action;
-      return todontlist.map((item) => {
+
+      return todos.map((item) => {
         const { id } = item;
         return updatedId === id ? { ...item, updateYn: true } : item;
       });
     }
     case "updatedTxt": {
       const { value, updatedId } = action;
-      return todontlist.map((item) => {
+
+      return todos.map((item) => {
         const { id } = item;
         return updatedId === id ? { ...item, updateTodo: value } : item;
       });
     }
     case "canceledUpdate": {
       const { canceledId } = action;
-      return todontlist.map((item) => {
+
+      return todos.map((item) => {
         const { id, todo } = item;
         return canceledId === id
           ? { ...item, updateTodo: todo, updateYn: false }
@@ -52,18 +49,28 @@ export default function todontlistReducer(todontlist, action) {
     }
     case "updated": {
       const { updatedId } = action;
-      return todontlist.map((item) => {
+
+      return todos.map((item) => {
         const { id, updateTodo } = item;
         return updatedId === id
           ? { ...item, todo: updateTodo, updateYn: false }
           : item;
       });
     }
-    case "checked": {
+    case "checkedStart": {
       const { checkedId, checked } = action;
-      return todontlist.map((item) => {
+
+      return todos.map((item) => {
         const { id } = item;
         return checkedId === id ? { ...item, startYn: checked } : item;
+      });
+    }
+    case "checkedDone": {
+      const { checkedId, checked } = action;
+
+      return todos.map((item) => {
+        const { id } = item;
+        return checkedId === id ? { ...item, doneYn: checked } : item;
       });
     }
     default: {
