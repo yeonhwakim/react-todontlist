@@ -1,19 +1,16 @@
 import React, { useEffect, useReducer } from "react";
 import Header from "../header/Header";
-import donelistReducer from "../../reducers/donelist-reducer";
 import List from "../list/List";
+import todosReducer from "../../reducers/todos-reducer";
+import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
+import { getFilterdList } from "../../utils/filterList";
 
 function DoneList() {
-  const [donelist, dispatch] = useReducer(donelistReducer, []);
+  const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
 
   useEffect(() => {
-    fetch(`data/todos.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "fetch", todos: data });
-      })
-      .catch((e) => console.log(e));
-  }, []);
+    setLocalStoage(todos);
+  }, [todos]);
 
   const handleDelete = (deletedId) => {
     dispatch({ type: "deleted", deletedId });
@@ -35,6 +32,11 @@ function DoneList() {
     e.preventDefault();
     dispatch({ type: "updated", updatedId });
   };
+
+  const donelist = getFilterdList({
+    list: todos,
+    filterName: "donelist",
+  });
 
   return (
     <div>
