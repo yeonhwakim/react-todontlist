@@ -4,14 +4,13 @@ import Header from "../header/Header";
 import List from "../list/List";
 import AddForm from "../form/AddForm";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
+import { getFilterdList } from "../../utils/filterList";
 
 function ToDontList() {
-  const [todontlist, dispatch] = useReducer(todontlistReducer, []);
-
-  useEffect(() => {
-    const todos = getLocalStoage("todos");
-    dispatch({ type: "fetch", todos });
-  }, []);
+  const [todontlist, dispatch] = useReducer(
+    todontlistReducer,
+    getLocalStoage("todos")
+  );
 
   useEffect(() => {
     setLocalStoage(todontlist);
@@ -44,15 +43,19 @@ function ToDontList() {
 
   const handleCheck = (e, checkedId) => {
     dispatch({ type: "checked", checkedId, checked: e.target.checked });
-    dispatch({ type: "setTodontList", checkedId, checked: e.target.checked });
   };
+
+  const filteredList = getFilterdList({
+    list: todontlist,
+    filterName: "todontlist",
+  });
 
   return (
     <div>
       <Header title={"TO DON'T LIST"} />
-      {todontlist && (
+      {filteredList && (
         <List
-          list={todontlist}
+          list={filteredList}
           handleCheck={handleCheck}
           handleDelete={handleDelete}
           handleUpdateState={handleUpdateState}
