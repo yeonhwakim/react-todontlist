@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { formatDate } from "../utils/date";
 
 export default function todosReducer(todos, action) {
   switch (action.type) {
@@ -13,6 +14,7 @@ export default function todosReducer(todos, action) {
           updateTodo: newTodo,
           startYn: false,
           doneYn: false,
+          addDate: formatDate(new Date()),
         },
       ];
     }
@@ -62,7 +64,9 @@ export default function todosReducer(todos, action) {
 
       return todos.map((item) => {
         const { id } = item;
-        return checkedId === id ? { ...item, startYn: checked } : item;
+        return checkedId === id
+          ? { ...item, startYn: checked, startDate: new Date() }
+          : item;
       });
     }
     case "checkedDone": {
@@ -70,7 +74,9 @@ export default function todosReducer(todos, action) {
 
       return todos.map((item) => {
         const { id } = item;
-        return checkedId === id ? { ...item, doneYn: checked } : item;
+        return checkedId === id
+          ? { ...item, doneYn: checked, doneDate: new Date() }
+          : item;
       });
     }
     default: {
