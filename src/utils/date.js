@@ -4,7 +4,7 @@ function leftPad(value) {
 
 export function formatDate(date, delimiter = "-") {
   const year = date.getFullYear();
-  const month = leftPad(date.getMonth());
+  const month = leftPad(date.getMonth() + 1);
   const day = leftPad(date.getDate());
 
   return [year, month, day].join(delimiter);
