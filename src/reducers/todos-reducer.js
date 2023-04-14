@@ -65,7 +65,7 @@ export default function todosReducer(todos, action) {
       return todos.map((item) => {
         const { id } = item;
         return checkedId === id
-          ? { ...item, startYn: checked, startDate: new Date() }
+          ? { ...item, startYn: checked, startDate: formatDate(new Date()) }
           : item;
       });
     }
@@ -75,7 +75,7 @@ export default function todosReducer(todos, action) {
       return todos.map((item) => {
         const { id } = item;
         return checkedId === id
-          ? { ...item, doneYn: checked, doneDate: new Date() }
+          ? { ...item, doneYn: checked, doneDate: formatDate(new Date()) }
           : item;
       });
     }
