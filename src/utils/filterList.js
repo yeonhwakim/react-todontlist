@@ -29,7 +29,6 @@ export function getFilterdLessThreeMonthList(list) {
 }
 
 export function getFilterdListByDoneDate(list) {
-  console.log(list);
   if (list.length < 1) {
     return [];
   }
@@ -46,4 +45,10 @@ export function getFilterdListByDoneDate(list) {
   });
 
   return doneList;
+}
+
+export function getDateDiff(startDate) {
+  const diffDate = new Date().getTime() - new Date(startDate);
+
+  return Math.abs(diffDate / (1000 * 60 * 60 * 24)).toFixed(1);
 }
