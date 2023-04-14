@@ -27,3 +27,23 @@ export function getFilterdLessThreeMonthList(list) {
       })
     : [];
 }
+
+export function getFilterdListByDoneDate(list) {
+  console.log(list);
+  if (list.length < 1) {
+    return [];
+  }
+
+  const doneList = {};
+
+  list.forEach((item) => {
+    const { doneDate } = item;
+    if (!doneList[doneDate]) {
+      doneList[doneDate] = [item];
+      return;
+    }
+    doneList[doneDate].push(item);
+  });
+
+  return doneList;
+}
