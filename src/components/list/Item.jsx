@@ -18,8 +18,10 @@ function Item({
             <input type="checkbox" onChange={(e) => handleCheck(e, id)} />
           )}
           <span>{todo}</span>
-          <button onClick={() => handleDelete(id)}>delete</button>
-          <button onClick={() => handleUpdateState(id)}>update</button>
+          {!doneYn && <button onClick={() => handleDelete(id)}>delete</button>}
+          {!doneYn && (
+            <button onClick={() => handleUpdateState(id)}>update</button>
+          )}
         </div>
       )}
       {updateYn && (
