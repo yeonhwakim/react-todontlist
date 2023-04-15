@@ -21,7 +21,7 @@ function Item({
           )}
           <span>{todo}</span>
           {startYn && !doneYn && <span>{`${getDateDiff(startDate)} 일`}</span>}
-          {startYn && !doneYn && (
+          {(startYn || doneYn) && (
             <button onClick={() => handleReset(id)}>reset</button>
           )}
           {!startYn && !doneYn && (

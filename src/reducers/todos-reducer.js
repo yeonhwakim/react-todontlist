@@ -33,6 +33,16 @@ export default function todosReducer(todos, action) {
           : item;
       });
     }
+    case "resetDone": {
+      const { resetId } = action;
+
+      return todos.map((item) => {
+        const { id } = item;
+        return resetId === id
+          ? { ...item, doneYn: false, doneDate: null }
+          : item;
+      });
+    }
     case "updatedState": {
       const { updatedId } = action;
 
