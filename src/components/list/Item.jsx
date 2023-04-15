@@ -1,8 +1,9 @@
 import React from "react";
 import UpdateForm from "../form/UpdateForm";
+import { getDateDiff } from "../../utils/filterList";
 
 function Item({
-  item: { id, todo, updateTodo, updateYn, doneYn },
+  item: { id, todo, updateTodo, startYn, updateYn, doneYn, startDate },
   handleCheck,
   handleDelete,
   handleUpdateState,
@@ -18,8 +19,11 @@ function Item({
             <input type="checkbox" onChange={(e) => handleCheck(e, id)} />
           )}
           <span>{todo}</span>
-          <button onClick={() => handleDelete(id)}>delete</button>
-          <button onClick={() => handleUpdateState(id)}>update</button>
+          {startYn && !doneYn && <span>{`${getDateDiff(startDate)} 일`}</span>}
+          {!doneYn && <button onClick={() => handleDelete(id)}>delete</button>}
+          {!doneYn && (
+            <button onClick={() => handleUpdateState(id)}>update</button>
+          )}
         </div>
       )}
       {updateYn && (

@@ -4,10 +4,16 @@ import Header from "../header/Header";
 import List from "../list/List";
 import AddForm from "../form/AddForm";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
-import { getFilterdList } from "../../utils/filterList";
+import {
+  getFilterdLessThreeMonthList,
+  getFilterdList,
+} from "../../utils/filterList";
 
 function ToDontList() {
-  const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
+  const [todos, dispatch] = useReducer(
+    todosReducer,
+    getFilterdLessThreeMonthList(getLocalStoage("todos"))
+  );
 
   useEffect(() => {
     setLocalStoage(todos);
