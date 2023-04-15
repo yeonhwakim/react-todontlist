@@ -23,6 +23,16 @@ export default function todosReducer(todos, action) {
 
       return todos.filter(({ id }) => id !== deletedId);
     }
+    case "resetStart": {
+      const { resetId } = action;
+
+      return todos.map((item) => {
+        const { id } = item;
+        return resetId === id
+          ? { ...item, startYn: false, startDate: null }
+          : item;
+      });
+    }
     case "updatedState": {
       const { updatedId } = action;
 

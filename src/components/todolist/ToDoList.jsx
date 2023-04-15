@@ -12,8 +12,8 @@ function ToDoList() {
     setLocalStoage(todos);
   }, [todos]);
 
-  const handleDelete = (deletedId) => {
-    dispatch({ type: "deleted", deletedId });
+  const handleReset = (resetId) => {
+    dispatch({ type: "resetStart", resetId });
   };
 
   const handleUpdateState = (updatedId) => {
@@ -49,7 +49,7 @@ function ToDoList() {
         <List
           list={todolist}
           handleCheck={handleCheck}
-          handleDelete={handleDelete}
+          handleReset={handleReset}
           handleUpdateState={handleUpdateState}
           handleUpdate={handleUpdate}
           handleUpdateTxt={handleUpdateTxt}
