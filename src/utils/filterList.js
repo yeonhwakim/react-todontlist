@@ -14,7 +14,7 @@ export function getFilterdList({ list, filterName }) {
 }
 
 export function getFilterdLessThreeMonthList(list) {
-  return list.length > 0
+  return list?.length > 0
     ? list.filter((item) => {
         const { addDate, startDate } = item;
 
