@@ -4,6 +4,7 @@ import Item from "./Item";
 function List({
   list,
   handleCheck,
+  handleReset,
   handleDelete,
   handleUpdateState,
   handleUpdate,
@@ -18,6 +19,7 @@ function List({
             key={item.id}
             item={item}
             handleCheck={handleCheck}
+            handleReset={handleReset}
             handleDelete={handleDelete}
             handleUpdateState={handleUpdateState}
             handleUpdate={handleUpdate}

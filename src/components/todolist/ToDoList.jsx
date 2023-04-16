@@ -12,8 +12,18 @@ function ToDoList() {
     setLocalStoage(todos);
   }, [todos]);
 
-  const handleDelete = (deletedId) => {
-    dispatch({ type: "deleted", deletedId });
+  const handleReset = (resetId) => {
+    dispatch({ type: "resetStart", resetId });
+
+    if (todolist?.length > 3) {
+      return;
+    }
+
+    dispatch({
+      type: "checkedStart",
+      checkedId: getFilterdList({ list: todos, filterName: "todontlist" })[0]
+        ?.id,
+    });
   };
 
   const handleUpdateState = (updatedId) => {
@@ -35,6 +45,16 @@ function ToDoList() {
 
   const handleCheck = (e, checkedId) => {
     dispatch({ type: "checkedDone", checkedId, checked: e.target.checked });
+
+    if (todolist?.length > 3) {
+      return;
+    }
+
+    dispatch({
+      type: "checkedStart",
+      checkedId: getFilterdList({ list: todos, filterName: "todontlist" })[0]
+        ?.id,
+    });
   };
 
   const todolist = getFilterdList({
@@ -49,7 +69,7 @@ function ToDoList() {
         <List
           list={todolist}
           handleCheck={handleCheck}
-          handleDelete={handleDelete}
+          handleReset={handleReset}
           handleUpdateState={handleUpdateState}
           handleUpdate={handleUpdate}
           handleUpdateTxt={handleUpdateTxt}

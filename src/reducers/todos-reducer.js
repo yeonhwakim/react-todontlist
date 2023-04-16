@@ -23,6 +23,24 @@ export default function todosReducer(todos, action) {
 
       return todos.filter(({ id }) => id !== deletedId);
     }
+    case "resetStart": {
+      const { resetId } = action;
+
+      return todos.map((item) => {
+        const { id } = item;
+        return resetId === id
+          ? { ...item, startYn: false, startDate: null, doneDate: null }
+          : item;
+      });
+    }
+    case "resetDone": {
+      const { resetId } = action;
+
+      return todos.map((item) => {
+        const { id } = item;
+        return resetId === id ? { ...item, doneYn: false } : item;
+      });
+    }
     case "updatedState": {
       const { updatedId } = action;
 
@@ -60,12 +78,12 @@ export default function todosReducer(todos, action) {
       });
     }
     case "checkedStart": {
-      const { checkedId, checked } = action;
+      const { checkedId } = action;
 
       return todos.map((item) => {
         const { id } = item;
         return checkedId === id
-          ? { ...item, startYn: checked, startDate: formatDate(new Date()) }
+          ? { ...item, startYn: true, startDate: formatDate(new Date()) }
           : item;
       });
     }

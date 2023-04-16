@@ -45,7 +45,11 @@ function ToDontList() {
   };
 
   const handleCheck = (e, checkedId) => {
-    dispatch({ type: "checkedStart", checkedId, checked: e.target.checked });
+    if (getFilterdList({ list: todos, filterName: "todolist" }).length > 2) {
+      return;
+    }
+
+    dispatch({ type: "checkedStart", checkedId });
   };
 
   const todontlist = getFilterdList({

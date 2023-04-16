@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect, useReducer } from "react";
 import Header from "../header/Header";
 import List from "../list/DoneList";
-import { getLocalStoage } from "../../utils/localStorage";
+import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import {
   getFilterdList,
   getFilterdListByDoneDate,
 } from "../../utils/filterList";
+import todosReducer from "../../reducers/todos-reducer";
 
 function DoneList() {
+  const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
+
+  useEffect(() => {
+    setLocalStoage(todos);
+  }, [todos]);
+
+  const handleReset = (resetId) => {
+    dispatch({ type: "resetDone", resetId });
+  };
+
   const donelist = getFilterdListByDoneDate(
     getFilterdList({
-      list: getLocalStoage("todos"),
+      list: todos,
       filterName: "donelist",
     })
   );
@@ -18,7 +29,7 @@ function DoneList() {
   return (
     <div>
       <Header title={"DONE LIST"} />
-      {donelist && <List list={donelist} />}
+      {donelist && <List list={donelist} handleReset={handleReset} />}
     </div>
   );
 }
