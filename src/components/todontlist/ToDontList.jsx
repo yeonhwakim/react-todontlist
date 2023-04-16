@@ -49,7 +49,7 @@ function ToDontList() {
       return;
     }
 
-    dispatch({ type: "checkedStart", checkedId, checked: e.target.checked });
+    dispatch({ type: "checkedStart", checkedId });
   };
 
   const todontlist = getFilterdList({
