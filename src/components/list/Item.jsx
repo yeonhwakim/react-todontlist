@@ -3,7 +3,16 @@ import UpdateForm from "../form/UpdateForm";
 import { getDateDiff } from "../../utils/filterList";
 
 function Item({
-  item: { id, todo, updateTodo, startYn, updateYn, doneYn, startDate },
+  item: {
+    id,
+    todo,
+    updateTodo,
+    startYn,
+    updateYn,
+    doneYn,
+    startDate,
+    doneDate,
+  },
   handleCheck,
   handleReset,
   handleDelete,
@@ -21,6 +30,7 @@ function Item({
           )}
           <span>{todo}</span>
           {startYn && !doneYn && <span>{`${getDateDiff(startDate)} 일`}</span>}
+          {startYn && !doneYn && doneDate && <span>[rollback]</span>}
           {(startYn || doneYn) && (
             <button onClick={() => handleReset(id)}>reset</button>
           )}

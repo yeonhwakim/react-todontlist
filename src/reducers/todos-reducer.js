@@ -29,7 +29,7 @@ export default function todosReducer(todos, action) {
       return todos.map((item) => {
         const { id } = item;
         return resetId === id
-          ? { ...item, startYn: false, startDate: null }
+          ? { ...item, startYn: false, startDate: null, doneDate: null }
           : item;
       });
     }
@@ -38,9 +38,7 @@ export default function todosReducer(todos, action) {
 
       return todos.map((item) => {
         const { id } = item;
-        return resetId === id
-          ? { ...item, doneYn: false, doneDate: null }
-          : item;
+        return resetId === id ? { ...item, doneYn: false } : item;
       });
     }
     case "updatedState": {
