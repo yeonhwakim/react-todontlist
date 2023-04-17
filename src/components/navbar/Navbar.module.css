@@ -1,10 +1,11 @@
-nav {
+.nav {
   display: flex;
 }
 
 nav ul {
   list-style: none;
   display: flex;
+  flex-direction: column;
 }
 
 nav ul li {
