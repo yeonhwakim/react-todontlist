@@ -1,4 +1,14 @@
 .App {
   display: flex;
-  flex-direction: column;
+  width: 70%;
+  height: 60%;
+  background-color: red;
+}
+
+.navbar-wrapper {
+  width: 25%;
+}
+
+.list-wrapper {
+  width: 75%;
 }
