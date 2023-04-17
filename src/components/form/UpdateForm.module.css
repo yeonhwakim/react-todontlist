@@ -1,0 +1,28 @@
+.updateForm {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
+.updateInput {
+  border: 0;
+  background: transparent;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem 0 0;
+  border-bottom: 0.2rem solid;
+  color: black;
+  width: 50%;
+  outline: none;
+}
+
+.updateButton {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 0.2rem solid;
+  padding: 0;
+  margin-left: 1rem;
+}
