@@ -1,0 +1,59 @@
+.item {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.item > div:first-child {
+  min-width: 30%;
+  border-bottom: 0.2rem solid black;
+  display: flex;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.btnBox {
+  min-width: 25%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btnBox.done {
+  min-width: 13%;
+}
+
+.item input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5rem;
+  padding: 0;
+  border: 0.2rem solid black;
+}
+
+.item span {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0;
+}
+
+.item span.ellipsis {
+  max-width: 76%;
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-bottom: 0.2rem solid;
+  padding: 0;
+  margin-left: 1rem;
+}

@@ -1,15 +1,13 @@
 import React from "react";
-import Item from "./Item";
+import List from "./List";
+
+import doneItemStyle from "./DoneItem.module.css";
 
 function DoneItem({ date, list, handleReset }) {
   return (
-    <li key={date}>
+    <li className={doneItemStyle.doneItem} key={date}>
       <span>{date}</span>
-      <ul>
-        {list.map((item) => (
-          <Item key={item.id} item={item} handleReset={handleReset} />
-        ))}
-      </ul>
+      <List key={date} list={list} handleReset={handleReset} />
     </li>
   );
 }
