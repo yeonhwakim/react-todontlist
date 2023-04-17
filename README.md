@@ -26,9 +26,9 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
   2. - [X] ~READ - TO DON'T LIST~ 20230404
   3. - [X] ~UPDATE - TO DON'T LIST~ 20230404
   4. - [X] ~DELETE - TO DON'T LIST~ 20230404
-  5. - [ ] PERMANENTLY DELETE after 3 months  
-  6. - [ ] CHECKBOX - MOVE TO 'TO DP LSIT'
-  7. - [ ] CHECKBOX - ONLY THREE ITEMS
+  5. - [X] ~PERMANENTLY DELETE after 3 months~
+  6. - [X] ~CHECKBOX - MOVE TO 'TO DO LSIT'~
+  7. - [X] ~CHECKBOX - ONLY THREE ITEMS~
 
 
  #### TO DO LIST
@@ -37,31 +37,33 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
   2. - [X] ~READ - TO DO LIST~
   3. - [X] ~UPDATE - TO DO LIST~
   4. - [X] ~DELETE - TO DO LIST~
-  5. - [ ] MOVE TO 'TO DON'T LIST'
-  6. - [ ] CHECKBOX - MOVE TO 'DONE LSIT'
-  7. - [ ] CHECKBOX - AUTO MOVE FROM 'TO DON'T LIST'
+  5. - [X] ~MOVE TO 'TO DON'T LIST'~
+  6. - [X] ~CHECKBOX - MOVE TO 'DONE LSIT'~
+  7. - [X] ~CHECKBOX - AUTO MOVE FROM 'TO DON'T LIST'~
 
 
 ####  DONE LIST
 
-  1. - [X] ~ADD - DONE LIST
+  1. - [X] ~ADD - DONE LIST~
   2. - [X] ~READ - DONE LIST~
   3. - [X] ~UPDATE - DONE LIST~
   4. - [X] ~DELETE - DONE LIST~
-  5. - [ ] MOVE TO 'TO DO LIST'
+  5. - [X] ~MOVE TO 'TO DO LIST'~
 
 
 ####  ETC
-- - [ ] 체크박스, 번호, 할 일, to don't list에서 입력 날짜, to do list에서 시작 날짜, done list에서 끝난 날짜
-- - [ ] 리스트 이동은 체크박스로 구현
-- - [ ] 새로고침해도 상태 유지
+- - [X] 체크박스, 번호, 할 일, to don't list에서 입력 날짜, to do list에서 시작 날짜, done list에서 끝난 날짜
+- - [X] 리스트 이동은 체크박스로 구현
+- - [X] 새로고침해도 상태 유지
 - - [ ] 스타일링 하기
 - - [ ] 다크모드
-- - [ ] 라우터 처리 TO DON'T LIST / TO DO LIST / DONE LIST
+- - [X] 라우터 처리 TO DON'T LIST / TO DO LIST / DONE LIST
 - - [ ] 리액트 쿼리 처리
 - - [ ] 순서 이동 => 라이브러리 사용   
 
 
 ### 희망 기한
 
-2023년 03월 09일
+~2023년 04월 09일~
+
+2023년 04월 21일
