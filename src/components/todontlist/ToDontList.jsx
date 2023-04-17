@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import todosReducer from "../../reducers/todos-reducer";
-import Header from "../header/Header";
+import toDontListStyle from "./ToDontList.module.css";
 import List from "../list/List";
 import AddForm from "../form/AddForm";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
@@ -58,8 +58,7 @@ function ToDontList() {
   });
 
   return (
-    <div>
-      <Header title={"TO DON'T LIST"} />
+    <div className={toDontListStyle.toDontList}>
       {todontlist && (
         <List
           list={todontlist}
