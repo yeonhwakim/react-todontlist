@@ -128,6 +128,19 @@ table {
   border-spacing: 0;
 }
 
+a {
+  color: #551a8b;
+  text-decoration: none;
+  outline: none;
+  font-weight: bold;
+}
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #551a8b;
+}
+
 html,
 body {
   width: 100%;

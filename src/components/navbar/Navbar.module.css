@@ -16,3 +16,7 @@ nav ul li a {
   font-size: 2rem;
   font-weight: bold;
 }
+
+nav ul li.active a {
+  text-decoration: underline;
+}
