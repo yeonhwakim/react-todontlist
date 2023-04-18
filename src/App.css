@@ -7,9 +7,10 @@
 
 .navbar-wrapper {
   width: 25%;
+  flex: 1;
 }
 
 .list-wrapper {
-  width: 75%;
+  width: 60%;
   padding: 0.5rem;
 }
