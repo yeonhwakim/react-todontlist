@@ -27,10 +27,7 @@ function DoneList() {
   );
 
   return (
-    <div>
-      <Header title={"DONE LIST"} />
-      {donelist && <List list={donelist} handleReset={handleReset} />}
-    </div>
+    <div>{donelist && <List list={donelist} handleReset={handleReset} />}</div>
   );
 }
 

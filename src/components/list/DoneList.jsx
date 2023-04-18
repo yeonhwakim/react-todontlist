@@ -1,9 +1,11 @@
 import React from "react";
 import DoneItem from "./DoneItem";
 
+import doneListStyle from "./DoneList.module.css";
+
 function DoneList({ list, handleReset }) {
   return (
-    <ul>
+    <ul className={doneListStyle.doneList}>
       {Object.keys(list).map((date) => (
         <DoneItem
           key={date}

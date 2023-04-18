@@ -1,0 +1,23 @@
+.doneItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.doneItem > span {
+  text-decoration: underline;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.doneItem > ul {
+  width: 100%;
+}
+
+.doneItem .btnBox {
+  width: 15%;
+}

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import addFormStyle from "./AddForm.module.css";
+
 function AddForm({ handleAdd }) {
   const [newTodo, setNewTodo] = useState("");
 
@@ -16,14 +18,17 @@ function AddForm({ handleAdd }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={addFormStyle.addForm} onSubmit={handleSubmit}>
       <input
+        className={addFormStyle.addInput}
         type="text"
-        placeholder="Add to don't list"
+        placeholder="ADD TO DON'T LIST"
         value={newTodo}
         onChange={handleChange}
       />
-      <button type="submit">입력</button>
+      <button className={addFormStyle.addButton} type="submit">
+        ADD
+      </button>
     </form>
   );
 }

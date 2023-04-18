@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import todosReducer from "../../reducers/todos-reducer";
-import Header from "../header/Header";
+import toDoListStyle from "./ToDoList.module.css";
 import List from "../list/List";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import { getFilterdList } from "../../utils/filterList";
@@ -63,8 +63,7 @@ function ToDoList() {
   });
 
   return (
-    <div>
-      <Header title={"TO DO LIST"} />
+    <div className={toDoListStyle.toDoList}>
       {todolist && (
         <List
           list={todolist}

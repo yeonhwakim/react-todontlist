@@ -1,8 +1,11 @@
 import React from "react";
 import Item from "./Item";
 
+import listStyle from "./List.module.css";
+
 function List({
   list,
+  isDone = false,
   handleCheck,
   handleReset,
   handleDelete,
@@ -13,7 +16,7 @@ function List({
 }) {
   return (
     <>
-      <ul>
+      <ul className={`${listStyle.list} ${isDone && listStyle.done}`}>
         {list.map((item) => (
           <Item
             key={item.id}

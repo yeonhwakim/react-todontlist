@@ -1,0 +1,35 @@
+.addForm {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.5rem;
+}
+
+.addInput {
+  border: 0;
+  background: transparent;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem 0 0;
+  border-bottom: 0.2rem solid var(--color-list);
+  color: var(--color-list);
+  width: 60%;
+  outline: none;
+}
+
+.addInput::placeholder {
+  font-size: 2rem;
+  color: var(--color-list);
+  font-weight: bold;
+}
+
+.addButton {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 0.2rem solid var(--color-list);
+  color: var(--color-list);
+  padding: 0;
+  margin-left: 1rem;
+}
