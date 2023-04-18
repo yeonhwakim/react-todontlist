@@ -7,7 +7,7 @@ function DoneItem({ date, list, handleReset }) {
   return (
     <li className={doneItemStyle.doneItem} key={date}>
       <span>{date}</span>
-      <List key={date} list={list} handleReset={handleReset} />
+      <List key={date} isDone={true} list={list} handleReset={handleReset} />
     </li>
   );
 }

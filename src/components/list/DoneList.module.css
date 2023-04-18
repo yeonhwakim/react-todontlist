@@ -3,4 +3,5 @@
   align-items: flex-end;
   justify-content: flex-end;
   flex-direction: column;
+  padding: 0.5rem;
 }

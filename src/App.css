@@ -12,5 +12,17 @@
 
 .list-wrapper {
   width: 60%;
-  padding: 0.5rem;
+  overflow: auto;
+}
+
+.list-wrapper::-webkit-scrollbar {
+  width: 0.3rem;
+}
+.list-wrapper::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 0.3rem;
+}
+.list-wrapper::-webkit-scrollbar-track {
+  background-color: red;
+  border-radius: 0.3rem;
 }
