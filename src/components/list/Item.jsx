@@ -27,15 +27,25 @@ function Item({
     <li className={itemStyle.item}>
       {!updateYn && (
         <>
-          <div>
-            {!doneYn && (
-              <input type="checkbox" onChange={(e) => handleCheck(e, id)} />
-            )}
+          {!doneYn && (
+            <>
+              <input
+                type="checkbox"
+                id={id}
+                onChange={(e) => handleCheck(e, id)}
+              />
+              <label htmlFor={id}></label>
+            </>
+          )}
+          <div
+            className={`${itemStyle.todoBox} ${
+              startYn && !doneYn && doneDate && itemStyle.rollback
+            }`}
+          >
             <span className={itemStyle.ellipsis}>{todo}</span>
             {startYn && !doneYn && (
               <span>{`${getDateDiff(startDate)} 일`}</span>
             )}
-            {startYn && !doneYn && doneDate && <span>[rollback]</span>}
           </div>
           <div className={`${itemStyle.btnBox} ${doneYn && itemStyle.done}`}>
             {!doneYn && (

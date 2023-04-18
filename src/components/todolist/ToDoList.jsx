@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from "react";
 import todosReducer from "../../reducers/todos-reducer";
 import toDoListStyle from "./ToDoList.module.css";
-import Header from "../header/Header";
 import List from "../list/List";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import { getFilterdList } from "../../utils/filterList";

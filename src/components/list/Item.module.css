@@ -14,6 +14,23 @@
   flex: 1;
 }
 
+.todoBox {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  border-bottom: 0.2rem solid black;
+  margin-left: 0.5rem;
+}
+
+.todoBox.rollback {
+  border-bottom: 0.2rem solid white;
+  margin-left: 0.5rem;
+}
+
+.todoBox span:first-child {
+  margin-left: -4px;
+}
+
 .btnBox {
   min-width: 25%;
   display: flex;
@@ -24,11 +41,25 @@
   min-width: 13%;
 }
 
-.item input[type="checkbox"] {
-  width: 1.5em;
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  display: inline-block;
+  width: 1.5rem;
   height: 1.5rem;
-  padding: 0;
   border: 0.2rem solid black;
+  position: relative;
+}
+input[type="checkbox"]:checked + label::after {
+  content: "V";
+  font-size: 1.6rem;
+  text-align: center;
+  position: absolute;
+  left: 0.2rem;
+  top: 0.1rem;
+  font-weight: bold;
 }
 
 .item span {
