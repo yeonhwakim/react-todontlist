@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Navbar.module.css";
 import navbarStyle from "./Navbar.module.css";
 import { Link, useLocation } from "react-router-dom";
+import { DarkModeContext } from "../../App";
 
 const tabList = [
   { title: "TO DON'T LIST", path: "/todontlist" },
@@ -11,7 +12,7 @@ const tabList = [
 
 function NavBar() {
   const location = useLocation();
-
+  const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
     <nav>
       <ul>
@@ -24,6 +25,9 @@ function NavBar() {
           </li>
         ))}
       </ul>
+      <button onClick={toggleDarkMode} type="button">
+        {darkMode ? "dark" : "red"}
+      </button>
     </nav>
   );
 }
