@@ -14,7 +14,7 @@ function NavBar() {
   const location = useLocation();
   const { darkMode, toggleDarkMode } = useContext(DarkModeContext);
   return (
-    <nav>
+    <nav className={navbarStyle.nav}>
       <ul>
         {tabList.map(({ title, path }) => (
           <li
@@ -25,9 +25,12 @@ function NavBar() {
           </li>
         ))}
       </ul>
-      <button onClick={toggleDarkMode} type="button">
-        {darkMode ? "dark" : "red"}
-      </button>
+      <div
+        className={`${navbarStyle.darkMode} ${
+          darkMode ? navbarStyle.light : navbarStyle.dark
+        }`}
+        onClick={toggleDarkMode}
+      ></div>
     </nav>
   );
 }
