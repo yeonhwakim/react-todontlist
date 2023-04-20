@@ -1,5 +1,6 @@
 .nav {
-  display: flex;
+  position: relative;
+  height: 100%;
 }
 
 nav ul {
@@ -19,4 +20,30 @@ nav ul li a {
 
 nav ul li.active a {
   text-decoration: underline;
+}
+
+.darkMode {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+}
+
+.light {
+  width: 0;
+  height: 0;
+  border-bottom: 1.5rem solid white;
+  border-top: 1.5rem solid transparent;
+  border-left: 1.5rem solid white;
+  border-right: 1.5rem solid transparent;
+}
+
+.dark {
+  width: 0;
+  height: 0;
+  border-bottom: 1.5rem solid black;
+  border-top: 1.5rem solid transparent;
+  border-left: 1.5rem solid black;
+  border-right: 1.5rem solid transparent;
 }

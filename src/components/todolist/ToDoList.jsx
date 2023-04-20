@@ -9,7 +9,7 @@ function ToDoList() {
   const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
 
   useEffect(() => {
-    setLocalStoage(todos);
+    setLocalStoage("todos", todos);
   }, [todos]);
 
   const handleReset = (resetId) => {
