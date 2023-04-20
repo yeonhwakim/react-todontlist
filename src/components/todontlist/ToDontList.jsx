@@ -16,7 +16,7 @@ function ToDontList() {
   );
 
   useEffect(() => {
-    setLocalStoage(todos);
+    setLocalStoage("todos", todos);
   }, [todos]);
 
   const handleAdd = (newTodo) => {

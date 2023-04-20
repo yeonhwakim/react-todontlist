@@ -1,7 +1,7 @@
-export function setLocalStoage(todos) {
-  localStorage.setItem("todos", JSON.stringify(todos));
+export function setLocalStoage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
-export function getLocalStoage() {
-  return JSON.parse(localStorage.getItem("todos"));
+export function getLocalStoage(key) {
+  return JSON.parse(localStorage.getItem(key));
 }
