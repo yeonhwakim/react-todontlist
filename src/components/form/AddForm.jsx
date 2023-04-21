@@ -13,6 +13,11 @@ function AddForm({ handleAdd }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (newTodo === "") {
+      return;
+    }
+
     handleAdd(newTodo);
     setNewTodo("");
   };
