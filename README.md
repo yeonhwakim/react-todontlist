@@ -22,7 +22,7 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 #### TO DON'T LIST
 
   1. - [X] ~CREATE - TO DON'T LIST~ 20230404
-       - [X] ~FILTER - TO DON'T LIST ~ 20230405
+       - [X] ~FILTER - TO DON'T LIST~ 20230405
   2. - [X] ~READ - TO DON'T LIST~ 20230404
   3. - [X] ~UPDATE - TO DON'T LIST~ 20230404
   4. - [X] ~DELETE - TO DON'T LIST~ 20230404
@@ -55,8 +55,8 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 - - [X] 체크박스, 번호, 할 일, to don't list에서 입력 날짜, to do list에서 시작 날짜, done list에서 끝난 날짜
 - - [X] 리스트 이동은 체크박스로 구현
 - - [X] 새로고침해도 상태 유지
-- - [ ] 스타일링 하기
-- - [ ] 다크모드
+- - [X] 스타일링 하기
+- - [X] 다크모드
 - - [X] 라우터 처리 TO DON'T LIST / TO DO LIST / DONE LIST
 - - [ ] 리액트 쿼리 처리
 - - [ ] 순서 이동 => 라이브러리 사용   
