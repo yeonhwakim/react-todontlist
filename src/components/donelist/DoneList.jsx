@@ -9,7 +9,10 @@ import {
 import todosReducer from "../../reducers/todos-reducer";
 
 function DoneList() {
-  const [todos, dispatch] = useReducer(todosReducer, getLocalStoage("todos"));
+  const [todos, dispatch] = useReducer(
+    todosReducer,
+    getLocalStoage("todos") || []
+  );
 
   useEffect(() => {
     setLocalStoage("todos", todos);
