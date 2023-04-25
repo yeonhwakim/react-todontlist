@@ -2,6 +2,8 @@ import React from "react";
 import UpdateForm from "../form/UpdateForm";
 import { getDateDiff } from "../../utils/filterList";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import itemStyle from "./Item.module.css";
 
 function Item({
@@ -56,6 +58,12 @@ function Item({
             )}
             {!startYn && !doneYn && (
               <button onClick={() => handleDelete(id)}>DELETE</button>
+            )}
+            {!doneYn && (
+              <FontAwesomeIcon
+                icon={faBars}
+                className={`my-handle ${itemStyle.myHandle}`}
+              />
             )}
           </div>
         </>

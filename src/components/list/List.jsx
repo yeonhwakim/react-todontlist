@@ -43,6 +43,7 @@ function List({
           setList={setState}
           animation="200"
           easing="ease-out"
+          handle=".my-handle"
           className={`${listStyle.list} ${isDone && listStyle.done}`}
         >
           {list.map((item) => (
