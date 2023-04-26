@@ -52,3 +52,11 @@ export function getDateDiff(startDate) {
 
   return Math.abs(diffDate / (1000 * 60 * 60 * 24)).toFixed(1);
 }
+
+export function compareIndex(a, b) {
+  return a.priority - b.priority;
+}
+
+export function filterCheckedLsit(list) {
+  return list.filter(({ checked }) => checked).sort(compareIndex);
+}

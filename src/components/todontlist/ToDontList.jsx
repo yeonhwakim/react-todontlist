@@ -5,6 +5,7 @@ import List from "../list/List";
 import AddForm from "../form/AddForm";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import {
+  compareIndex,
   getFilterdLessThreeMonthList,
   getFilterdList,
 } from "../../utils/filterList";
@@ -52,10 +53,19 @@ function ToDontList() {
     dispatch({ type: "checkedStart", checkedId });
   };
 
+  const handleSort = (state) => {
+    dispatch({
+      type: "sorted",
+      sortedTodos: state.map((item, index) => {
+        return { ...item, priority: index };
+      }),
+    });
+  };
+
   const todontlist = getFilterdList({
     list: todos,
     filterName: "todontlist",
-  });
+  }).sort(compareIndex);
 
   return (
     <div className={toDontListStyle.toDontList}>
@@ -68,6 +78,7 @@ function ToDontList() {
           handleUpdate={handleUpdate}
           handleUpdateTxt={handleUpdateTxt}
           handleCancelUpdate={handleCancelUpdate}
+          handleSort={handleSort}
         />
       )}
       <AddForm handleAdd={handleAdd} />

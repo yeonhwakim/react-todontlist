@@ -15,8 +15,13 @@ function List({
   handleUpdate,
   handleUpdateTxt,
   handleCancelUpdate,
+  handleSort,
 }) {
   const [state, setState] = useState(list);
+
+  const handleDrag = (e) => {
+    handleSort(state);
+  };
 
   return (
     <>
@@ -45,6 +50,7 @@ function List({
           easing="ease-out"
           handle=".my-handle"
           className={`${listStyle.list} ${isDone && listStyle.done}`}
+          onEnd={handleDrag}
         >
           {list.map((item) => (
             <Item

@@ -15,6 +15,9 @@ export default function todosReducer(todos, action) {
           startYn: false,
           doneYn: false,
           addDate: formatDate(new Date()),
+          priority:
+            todos.filter(({ startYn, doneYn }) => !startYn && !doneYn).length +
+            1,
         },
       ];
     }
@@ -96,6 +99,19 @@ export default function todosReducer(todos, action) {
           ? { ...item, doneYn: checked, doneDate: formatDate(new Date()) }
           : item;
       });
+    }
+    case "sorted": {
+      const { sortedTodos } = action;
+      let newLsit = [];
+      sortedTodos.forEach((sortedTodo) => {
+        newLsit = todos.map((item) => {
+          if (sortedTodo.id === item.id) {
+            return { ...item, index: sortedTodo.index + 1 };
+          }
+          return item;
+        });
+      });
+      return newLsit;
     }
     default: {
       throw Error("Invalid action type");
