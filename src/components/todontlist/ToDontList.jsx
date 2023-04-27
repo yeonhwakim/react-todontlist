@@ -53,10 +53,10 @@ function ToDontList() {
     dispatch({ type: "checkedStart", checkedId });
   };
 
-  const handleSort = (state) => {
+  const handleSort = ({ sortedTodos }) => {
     dispatch({
       type: "sorted",
-      sortedTodos: state.map((item, index) => {
+      sortedTodos: sortedTodos.map((item, index) => {
         return { ...item, priority: index };
       }),
     });

@@ -4,6 +4,7 @@ import Item from "./Item";
 import listStyle from "./List.module.css";
 
 import { ReactSortable } from "react-sortablejs";
+import { compareIndex } from "../../utils/filterList";
 
 function List({
   list,
@@ -17,7 +18,7 @@ function List({
   handleCancelUpdate,
   handleSort,
 }) {
-  const [state, setState] = useState(list);
+  const [state, setState] = useState(list.sort(compareIndex));
 
   const handleDrag = (e) => {
     handleSort(state);
@@ -44,6 +45,7 @@ function List({
       )}
       {!isDone && (
         <ReactSortable
+          tag="ul"
           list={state}
           setList={setState}
           animation="200"
@@ -52,7 +54,7 @@ function List({
           className={`${listStyle.list} ${isDone && listStyle.done}`}
           onEnd={handleDrag}
         >
-          {list.map((item) => (
+          {state.map((item) => (
             <Item
               key={item.id}
               item={item}
