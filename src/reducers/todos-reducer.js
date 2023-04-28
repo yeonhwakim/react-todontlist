@@ -102,16 +102,16 @@ export default function todosReducer(todos, action) {
     }
     case "sorted": {
       const { sortedTodos } = action;
-      let newLsit = [];
-      sortedTodos.forEach((sortedTodo) => {
-        newLsit = todos.map((item) => {
-          if (sortedTodo.id === item.id) {
-            return { ...item, index: sortedTodo.index + 1 };
-          }
-          return item;
-        });
+
+      return todos.map((item) => {
+        const sortedItem = sortedTodos.find(
+          (sortedItem) => sortedItem.id === item.id
+        );
+        if (sortedItem) {
+          return { ...item, priority: sortedItem.index + 1 };
+        }
+        return item;
       });
-      return newLsit;
     }
     default: {
       throw Error("Invalid action type");

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Item from "./Item";
 
 import listStyle from "./List.module.css";
 
 import { ReactSortable } from "react-sortablejs";
-import { compareIndex } from "../../utils/filterList";
 
 function List({
   list,
@@ -18,11 +17,11 @@ function List({
   handleCancelUpdate,
   handleSort,
 }) {
-  const [state, setState] = useState(list.sort(compareIndex));
+  const [state, setState] = useState(list);
 
-  const handleDrag = (e) => {
+  useEffect(() => {
     handleSort(state);
-  };
+  }, [handleSort, state]);
 
   return (
     <>
@@ -52,7 +51,6 @@ function List({
           easing="ease-out"
           handle=".my-handle"
           className={`${listStyle.list} ${isDone && listStyle.done}`}
-          onEnd={handleDrag}
         >
           {state.map((item) => (
             <Item

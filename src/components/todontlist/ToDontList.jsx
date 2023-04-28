@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import todosReducer from "../../reducers/todos-reducer";
 import toDontListStyle from "./ToDontList.module.css";
 import List from "../list/List";
@@ -53,14 +53,14 @@ function ToDontList() {
     dispatch({ type: "checkedStart", checkedId });
   };
 
-  const handleSort = ({ sortedTodos }) => {
+  const handleSort = useCallback((sortedTodos) => {
     dispatch({
       type: "sorted",
       sortedTodos: sortedTodos.map((item, index) => {
         return { ...item, priority: index };
       }),
     });
-  };
+  }, []);
 
   const todontlist = getFilterdList({
     list: todos,
