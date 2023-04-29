@@ -53,13 +53,8 @@ function ToDontList() {
     dispatch({ type: "checkedStart", checkedId });
   };
 
-  const handleSort = useCallback((sortedTodos) => {
-    dispatch({
-      type: "sorted",
-      sortedTodos: sortedTodos.map((item, index) => {
-        return { ...item, priority: index };
-      }),
-    });
+  const handleSort = useCallback((todos) => {
+    dispatch({ type: "sorted", todos });
   }, []);
 
   const todontlist = getFilterdList({

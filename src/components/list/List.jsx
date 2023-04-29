@@ -17,11 +17,23 @@ function List({
   handleCancelUpdate,
   handleSort,
 }) {
-  const [state, setState] = useState(list);
+  const [sortedList, setSortedList] = useState(list);
+  const [isSorted, setIsSorted] = useState(false);
 
   useEffect(() => {
-    handleSort(state);
-  }, [handleSort, state]);
+    setSortedList(list);
+  }, [list]);
+
+  useEffect(() => {
+    if (isSorted) {
+      handleSort(sortedList);
+      setIsSorted(false);
+    }
+  }, [handleSort, sortedList, isSorted]);
+
+  const handleEnd = () => {
+    setIsSorted(true);
+  };
 
   return (
     <>
@@ -45,14 +57,15 @@ function List({
       {!isDone && (
         <ReactSortable
           tag="ul"
-          list={state}
-          setList={setState}
+          list={sortedList}
+          setList={setSortedList}
           animation="200"
           easing="ease-out"
           handle=".my-handle"
           className={`${listStyle.list} ${isDone && listStyle.done}`}
+          onEnd={handleEnd}
         >
-          {state.map((item) => (
+          {sortedList.map((item) => (
             <Item
               key={item.id}
               item={item}

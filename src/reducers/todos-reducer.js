@@ -101,14 +101,18 @@ export default function todosReducer(todos, action) {
       });
     }
     case "sorted": {
-      const { sortedTodos } = action;
+      const { todos } = action;
+
+      const sortedTodos = todos.map((item, index) => {
+        return { ...item, priority: index + 1 };
+      });
 
       return todos.map((item) => {
         const sortedItem = sortedTodos.find(
           (sortedItem) => sortedItem.id === item.id
         );
         if (sortedItem) {
-          return { ...item, priority: sortedItem.index + 1 };
+          return { ...sortedItem };
         }
         return item;
       });
