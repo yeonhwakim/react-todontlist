@@ -1,4 +1,4 @@
-export function getFilterdList({ list, filterName }) {
+export function getFilteredList({ list, filterName }) {
   return list
     .filter(({ startYn, doneYn }) => {
       if (filterName === "todontlist") {
@@ -30,7 +30,7 @@ export function getFilterdLessThreeMonthList(list) {
     : [];
 }
 
-export function getFilterdListByDoneDate(list) {
+export function getFilteredListByDoneDate(list) {
   if (list.length < 1) {
     return [];
   }

@@ -3,7 +3,7 @@ import todosReducer from "../../reducers/todos-reducer";
 import toDoListStyle from "./ToDoList.module.css";
 import List from "../list/List";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
-import { getFilterdList } from "../../utils/filterList";
+import { getFilteredList } from "../../utils/filterList";
 
 function ToDoList() {
   const [todos, dispatch] = useReducer(
@@ -24,7 +24,7 @@ function ToDoList() {
 
     dispatch({
       type: "checkedStart",
-      checkedId: getFilterdList({ list: todos, filterName: "todontlist" })[0]
+      checkedId: getFilteredList({ list: todos, filterName: "todontlist" })[0]
         ?.id,
     });
   };
@@ -55,7 +55,7 @@ function ToDoList() {
 
     dispatch({
       type: "checkedStart",
-      checkedId: getFilterdList({ list: todos, filterName: "todontlist" })[0]
+      checkedId: getFilteredList({ list: todos, filterName: "todontlist" })[0]
         ?.id,
     });
   };
@@ -64,7 +64,7 @@ function ToDoList() {
     dispatch({ type: "sorted", sortedTodos, filterName: "todolist" });
   }, []);
 
-  const todolist = getFilterdList({
+  const todolist = getFilteredList({
     list: todos,
     filterName: "todolist",
   });

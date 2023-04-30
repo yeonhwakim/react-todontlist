@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { formatDate } from "../utils/date";
-import { getFilterdList } from "../utils/filterList";
+import { getFilteredList } from "../utils/filterList";
 
 export default function todosReducer(todos, action) {
   switch (action.type) {
@@ -17,7 +17,7 @@ export default function todosReducer(todos, action) {
           doneYn: false,
           addDate: formatDate(new Date()),
           priority:
-            getFilterdList({ list: todos, filterName: "todontlist" }).length +
+            getFilteredList({ list: todos, filterName: "todontlist" }).length +
             1,
         },
       ];
@@ -26,7 +26,7 @@ export default function todosReducer(todos, action) {
       const { deletedId } = action;
 
       const deleteTodos = todos.filter(({ id }) => id !== deletedId);
-      const filteredList = getFilterdList({
+      const filteredList = getFilteredList({
         list: deleteTodos,
         filterName: "todontlist",
       }).map((item, index) => ({ ...item, priority: index + 1 }));
@@ -51,12 +51,12 @@ export default function todosReducer(todos, action) {
               startDate: null,
               doneDate: null,
               priority:
-                getFilterdList({ list: todos, filterName: "todontlist" })
+                getFilteredList({ list: todos, filterName: "todontlist" })
                   .length + 1,
             }
           : item;
       });
-      const filteredList = getFilterdList({
+      const filteredList = getFilteredList({
         list: resetStartTodos,
         filterName: "todolist",
       }).map((item, index) => ({ ...item, priority: index + 1 }));
@@ -79,8 +79,8 @@ export default function todosReducer(todos, action) {
               ...item,
               doneYn: false,
               priority:
-                getFilterdList({ list: todos, filterName: "todolist" }).length +
-                1,
+                getFilteredList({ list: todos, filterName: "todolist" })
+                  .length + 1,
             }
           : item;
       });
@@ -132,12 +132,12 @@ export default function todosReducer(todos, action) {
               startYn: true,
               startDate: formatDate(new Date()),
               priority:
-                getFilterdList({ list: todos, filterName: "todolist" }).length +
-                1,
+                getFilteredList({ list: todos, filterName: "todolist" })
+                  .length + 1,
             }
           : item;
       });
-      const filteredList = getFilterdList({
+      const filteredList = getFilteredList({
         list: checkedStartTodos,
         filterName: "todontlist",
       }).map((item, index) => ({ ...item, priority: index + 1 }));
@@ -164,7 +164,7 @@ export default function todosReducer(todos, action) {
             }
           : item;
       });
-      const filterList = getFilterdList({
+      const filterList = getFilteredList({
         list: checkdDoneTodos,
         filterName: "todolist",
       }).map((item, index) => ({ ...item, priority: index + 1 }));
@@ -184,7 +184,7 @@ export default function todosReducer(todos, action) {
         return { ...item, priority: index + 1 };
       });
 
-      const filteredList = getFilterdList({
+      const filteredList = getFilteredList({
         list: resortedTodos,
         filterName,
       }).map((item, index) => ({ ...item, priority: index + 1 }));

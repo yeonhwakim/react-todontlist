@@ -6,7 +6,7 @@ import AddForm from "../form/AddForm";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import {
   getFilterdLessThreeMonthList,
-  getFilterdList,
+  getFilteredList,
 } from "../../utils/filterList";
 
 function ToDontList() {
@@ -45,7 +45,7 @@ function ToDontList() {
   };
 
   const handleCheck = (e, checkedId) => {
-    if (getFilterdList({ list: todos, filterName: "todolist" }).length > 2) {
+    if (getFilteredList({ list: todos, filterName: "todolist" }).length > 2) {
       return;
     }
 
@@ -56,7 +56,7 @@ function ToDontList() {
     dispatch({ type: "sorted", sortedTodos, filterName: "todontlist" });
   }, []);
 
-  const todontlist = getFilterdList({
+  const todontlist = getFilteredList({
     list: todos,
     filterName: "todontlist",
   });

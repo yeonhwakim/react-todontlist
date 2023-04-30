@@ -3,8 +3,8 @@ import Header from "../header/Header";
 import List from "../list/DoneList";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import {
-  getFilterdList,
-  getFilterdListByDoneDate,
+  getFilteredList,
+  getFilteredListByDoneDate,
 } from "../../utils/filterList";
 import todosReducer from "../../reducers/todos-reducer";
 
@@ -22,8 +22,8 @@ function DoneList() {
     dispatch({ type: "resetDone", resetId });
   };
 
-  const donelist = getFilterdListByDoneDate(
-    getFilterdList({
+  const donelist = getFilteredListByDoneDate(
+    getFilteredList({
       list: todos,
       filterName: "donelist",
     })
