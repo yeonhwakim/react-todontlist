@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import todosReducer from "../../reducers/todos-reducer";
 import toDoListStyle from "./ToDoList.module.css";
 import List from "../list/List";
@@ -60,6 +60,10 @@ function ToDoList() {
     });
   };
 
+  const handleSort = useCallback((sortedTodos) => {
+    dispatch({ type: "sorted", sortedTodos, filterName: "todolist" });
+  }, []);
+
   const todolist = getFilterdList({
     list: todos,
     filterName: "todolist",
@@ -76,6 +80,7 @@ function ToDoList() {
           handleUpdate={handleUpdate}
           handleUpdateTxt={handleUpdateTxt}
           handleCancelUpdate={handleCancelUpdate}
+          handleSort={handleSort}
         />
       )}
     </div>

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 import { formatDate } from "../utils/date";
+import { getFilterdList } from "../utils/filterList";
 
 export default function todosReducer(todos, action) {
   switch (action.type) {
@@ -101,20 +102,21 @@ export default function todosReducer(todos, action) {
       });
     }
     case "sorted": {
-      const { todos } = action;
+      const { sortedTodos, filterName } = action;
 
-      const sortedTodos = todos.map((item, index) => {
+      const resortedTodos = sortedTodos.map((item, index) => {
         return { ...item, priority: index + 1 };
       });
 
+      const filteredList = getFilterdList({
+        list: resortedTodos,
+        filterName,
+      }).map((item, index) => ({ ...item, priority: index + 1 }));
+
       return todos.map((item) => {
-        const sortedItem = sortedTodos.find(
-          (sortedItem) => sortedItem.id === item.id
-        );
-        if (sortedItem) {
-          return { ...sortedItem };
-        }
-        return item;
+        const filteredItem = filteredList.find(({ id }) => id === item.id);
+
+        return filteredItem ? filteredItem : item;
       });
     }
     default: {
