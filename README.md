@@ -59,11 +59,19 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 - - [X] 다크모드
 - - [X] 라우터 처리 TO DON'T LIST / TO DO LIST / DONE LIST
 - - [ ] 리액트 쿼리 처리
-- - [ ] 순서 이동 => 라이브러리 사용   
+- - [X] 순서 이동 => 라이브러리 사용   
+
+#### 우선순위
+- priority(우선순위)별로 sorting
+- 'TODONTLIST'에 추가하면 'TODONTLIST'에 해당하는 리트 중 가장 마지막 priority + 1
+- 순서가 바뀌면 바뀐 index로 수정
+- check되면 다시 sorting
+- reset되면 다시 sorting
+- 'TODOLIST'도 마찬가지
 
 
 ### 희망 기한
 
 ~2023년 04월 09일~ 
 
-2023년 04월 21일  
+~2023년 04월 21일~  
