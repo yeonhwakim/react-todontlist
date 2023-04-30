@@ -17,7 +17,7 @@ export default function todosReducer(todos, action) {
           doneYn: false,
           addDate: formatDate(new Date()),
           priority:
-            todos.filter(({ startYn, doneYn }) => !startYn && !doneYn).length +
+            getFilterdList({ list: todos, filterName: "todontlist" }).length +
             1,
         },
       ];
@@ -25,16 +25,48 @@ export default function todosReducer(todos, action) {
     case "deleted": {
       const { deletedId } = action;
 
-      return todos.filter(({ id }) => id !== deletedId);
+      const deleteTodos = todos.filter(({ id }) => id !== deletedId);
+      const filteredList = getFilterdList({
+        list: deleteTodos,
+        filterName: "todontlist",
+      }).map((item, index) => ({ ...item, priority: index + 1 }));
+
+      return deleteTodos.map((deleteTodo) => {
+        const filteredItem = filteredList.find(
+          ({ id }) => id === deleteTodo.id
+        );
+
+        return filteredItem ? filteredItem : deleteTodo;
+      });
     }
     case "resetStart": {
       const { resetId } = action;
 
-      return todos.map((item) => {
+      const resetStartTodos = todos.map((item) => {
         const { id } = item;
         return resetId === id
-          ? { ...item, startYn: false, startDate: null, doneDate: null }
+          ? {
+              ...item,
+              startYn: false,
+              startDate: null,
+              doneDate: null,
+              priority:
+                getFilterdList({ list: todos, filterName: "todontlist" })
+                  .length + 1,
+            }
           : item;
+      });
+      const filteredList = getFilterdList({
+        list: resetStartTodos,
+        filterName: "todolist",
+      }).map((item, index) => ({ ...item, priority: index + 1 }));
+
+      return resetStartTodos.map((resetStartTodo) => {
+        const filteredItem = filteredList.find(
+          ({ id }) => id === resetStartTodo.id
+        );
+
+        return filteredItem ? filteredItem : resetStartTodo;
       });
     }
     case "resetDone": {
@@ -42,7 +74,15 @@ export default function todosReducer(todos, action) {
 
       return todos.map((item) => {
         const { id } = item;
-        return resetId === id ? { ...item, doneYn: false } : item;
+        return resetId === id
+          ? {
+              ...item,
+              doneYn: false,
+              priority:
+                getFilterdList({ list: todos, filterName: "todolist" }).length +
+                1,
+            }
+          : item;
       });
     }
     case "updatedState": {
@@ -84,21 +124,57 @@ export default function todosReducer(todos, action) {
     case "checkedStart": {
       const { checkedId } = action;
 
-      return todos.map((item) => {
+      const checkedStartTodos = todos.map((item) => {
         const { id } = item;
         return checkedId === id
-          ? { ...item, startYn: true, startDate: formatDate(new Date()) }
+          ? {
+              ...item,
+              startYn: true,
+              startDate: formatDate(new Date()),
+              priority:
+                getFilterdList({ list: todos, filterName: "todolist" }).length +
+                1,
+            }
           : item;
+      });
+      const filteredList = getFilterdList({
+        list: checkedStartTodos,
+        filterName: "todontlist",
+      }).map((item, index) => ({ ...item, priority: index + 1 }));
+
+      return checkedStartTodos.map((checkedStartTodo) => {
+        const filteredItem = filteredList.find(
+          ({ id }) => id === checkedStartTodo.id
+        );
+
+        return filteredItem ? filteredItem : checkedStartTodo;
       });
     }
     case "checkedDone": {
       const { checkedId, checked } = action;
 
-      return todos.map((item) => {
+      const checkdDoneTodos = todos.map((item) => {
         const { id } = item;
         return checkedId === id
-          ? { ...item, doneYn: checked, doneDate: formatDate(new Date()) }
+          ? {
+              ...item,
+              doneYn: checked,
+              doneDate: formatDate(new Date()),
+              priority: null,
+            }
           : item;
+      });
+      const filterList = getFilterdList({
+        list: checkdDoneTodos,
+        filterName: "todolist",
+      }).map((item, index) => ({ ...item, priority: index + 1 }));
+
+      return checkdDoneTodos.map((checkdDoneTodo) => {
+        const filterItem = filterList.find(
+          ({ id }) => id === checkdDoneTodo.id
+        );
+
+        return filterItem ? filterItem : checkdDoneTodo;
       });
     }
     case "sorted": {
