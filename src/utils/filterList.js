@@ -1,16 +1,18 @@
-export function getFilterdList({ list, filterName }) {
-  return list.filter(({ startYn, doneYn }) => {
-    if (filterName === "todontlist") {
-      return !startYn && !doneYn;
-    }
-    if (filterName === "todolist") {
-      return startYn && !doneYn;
-    }
-    if (filterName === "donelist") {
-      return startYn && doneYn;
-    }
-    return [];
-  });
+export function getFilteredList({ list, filterName }) {
+  return list
+    .filter(({ startYn, doneYn }) => {
+      if (filterName === "todontlist") {
+        return !startYn && !doneYn;
+      }
+      if (filterName === "todolist") {
+        return startYn && !doneYn;
+      }
+      if (filterName === "donelist") {
+        return startYn && doneYn;
+      }
+      return [];
+    })
+    .sort(compareIndex);
 }
 
 export function getFilterdLessThreeMonthList(list) {
@@ -28,7 +30,7 @@ export function getFilterdLessThreeMonthList(list) {
     : [];
 }
 
-export function getFilterdListByDoneDate(list) {
+export function getFilteredListByDoneDate(list) {
   if (list.length < 1) {
     return [];
   }
@@ -51,4 +53,8 @@ export function getDateDiff(startDate) {
   const diffDate = new Date().getTime() - new Date(startDate);
 
   return Math.abs(diffDate / (1000 * 60 * 60 * 24)).toFixed(1);
+}
+
+export function compareIndex(a, b) {
+  return a.priority - b.priority;
 }

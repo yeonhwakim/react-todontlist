@@ -90,3 +90,10 @@ input[type="checkbox"]:checked + label::after {
   margin-left: 1rem;
   color: var(--color-list);
 }
+
+.myHandle {
+  color: var(--color-list);
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+}

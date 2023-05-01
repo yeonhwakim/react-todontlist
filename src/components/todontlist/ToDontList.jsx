@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import todosReducer from "../../reducers/todos-reducer";
 import toDontListStyle from "./ToDontList.module.css";
 import List from "../list/List";
@@ -6,7 +6,7 @@ import AddForm from "../form/AddForm";
 import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import {
   getFilterdLessThreeMonthList,
-  getFilterdList,
+  getFilteredList,
 } from "../../utils/filterList";
 
 function ToDontList() {
@@ -45,14 +45,18 @@ function ToDontList() {
   };
 
   const handleCheck = (e, checkedId) => {
-    if (getFilterdList({ list: todos, filterName: "todolist" }).length > 2) {
+    if (getFilteredList({ list: todos, filterName: "todolist" }).length > 2) {
       return;
     }
 
     dispatch({ type: "checkedStart", checkedId });
   };
 
-  const todontlist = getFilterdList({
+  const handleSort = useCallback((sortedTodos) => {
+    dispatch({ type: "sorted", sortedTodos, filterName: "todontlist" });
+  }, []);
+
+  const todontlist = getFilteredList({
     list: todos,
     filterName: "todontlist",
   });
@@ -68,6 +72,7 @@ function ToDontList() {
           handleUpdate={handleUpdate}
           handleUpdateTxt={handleUpdateTxt}
           handleCancelUpdate={handleCancelUpdate}
+          handleSort={handleSort}
         />
       )}
       <AddForm handleAdd={handleAdd} />
