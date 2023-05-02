@@ -1,23 +1,14 @@
-import { useCallback, useEffect, useReducer } from "react";
-import todosReducer from "../../reducers/todos-reducer";
+import { useCallback } from "react";
 import toDontListStyle from "./ToDontList.module.css";
 import List from "../list/List";
 import AddForm from "../form/AddForm";
-import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
-import {
-  getFilterdLessThreeMonthList,
-  getFilteredList,
-} from "../../utils/filterList";
+import { getFilteredList } from "../../utils/filterList";
+import useTodos from "../../hooks/use-todos";
 
 function ToDontList() {
-  const [todos, dispatch] = useReducer(
-    todosReducer,
-    getFilterdLessThreeMonthList(getLocalStoage("todos"))
-  );
+  const [todos, dispatch, filteredTodos] = useTodos();
 
-  useEffect(() => {
-    setLocalStoage("todos", todos);
-  }, [todos]);
+  const todontlist = filteredTodos;
 
   const handleAdd = (newTodo) => {
     dispatch({ type: "added", newTodo });
@@ -55,11 +46,6 @@ function ToDontList() {
   const handleSort = useCallback((sortedTodos) => {
     dispatch({ type: "sorted", sortedTodos, filterName: "todontlist" });
   }, []);
-
-  const todontlist = getFilteredList({
-    list: todos,
-    filterName: "todontlist",
-  });
 
   return (
     <div className={toDontListStyle.toDontList}>
