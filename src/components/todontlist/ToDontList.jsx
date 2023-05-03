@@ -4,9 +4,11 @@ import List from "../list/List";
 import AddForm from "../form/AddForm";
 import { getFilteredList } from "../../utils/filterList";
 import useTodos from "../../hooks/use-todos";
+import useFetchTodos from "../../hooks/use-fetch-todos";
 
 function ToDontList() {
-  const [todos, dispatch, filteredTodos] = useTodos();
+  const [todos, dispatch, filteredTodos] = useFetchTodos();
+  // const [todos, dispatch, filteredTodos] = useTodos();
 
   const todontlist = filteredTodos;
 

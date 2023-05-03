@@ -4,6 +4,11 @@ import { getFilteredList } from "../utils/filterList";
 
 export default function todosReducer(todos, action) {
   switch (action.type) {
+    case "fetch": {
+      const { fetchTodos } = action;
+
+      return [...fetchTodos];
+    }
     case "added": {
       const { newTodo } = action;
 
