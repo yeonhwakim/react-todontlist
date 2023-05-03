@@ -3,7 +3,7 @@ import List from "../list/DoneList";
 import useTodos from "../../hooks/use-todos";
 
 function DoneList() {
-  const [dispatch, filteredTodos] = useTodos();
+  const [, dispatch, filteredTodos] = useTodos();
 
   const donelist = filteredTodos;
 
