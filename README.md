@@ -69,6 +69,13 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 - reset되면 다시 sorting
 - 'TODOLIST'도 마찬가지
 
+#### useQuery
+- postman으로 가상 api 생성
+- useQuery로 fetch된 todos 리턴, 그외 로직 동일
+- useQuery 옵션 설정해보기
+- useQuery 리턴한 'isLoading' 으로 로딩 랜더링
+- useQuery 실습후 localstorage로 돌려놓기
+
 
 ### 희망 기한
 
