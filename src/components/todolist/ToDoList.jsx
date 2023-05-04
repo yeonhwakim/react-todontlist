@@ -1,24 +1,18 @@
-import { useCallback, useEffect, useReducer } from "react";
-import todosReducer from "../../reducers/todos-reducer";
+import { useCallback } from "react";
 import toDoListStyle from "./ToDoList.module.css";
 import List from "../list/List";
-import { getLocalStoage, setLocalStoage } from "../../utils/localStorage";
 import { getFilteredList } from "../../utils/filterList";
+import useTodos from "../../hooks/use-todos";
 
 function ToDoList() {
-  const [todos, dispatch] = useReducer(
-    todosReducer,
-    getLocalStoage("todos") || []
-  );
+  const [todos, dispatch, filteredTodos] = useTodos();
 
-  useEffect(() => {
-    setLocalStoage("todos", todos);
-  }, [todos]);
+  const todolist = filteredTodos;
 
   const handleReset = (resetId) => {
     dispatch({ type: "resetStart", resetId });
 
-    if (todolist?.length > 3) {
+    if (filteredTodos?.length > 3) {
       return;
     }
 
@@ -49,7 +43,7 @@ function ToDoList() {
   const handleCheck = (e, checkedId) => {
     dispatch({ type: "checkedDone", checkedId, checked: e.target.checked });
 
-    if (todolist?.length > 3) {
+    if (filteredTodos?.length > 3) {
       return;
     }
 
@@ -63,11 +57,6 @@ function ToDoList() {
   const handleSort = useCallback((sortedTodos) => {
     dispatch({ type: "sorted", sortedTodos, filterName: "todolist" });
   }, []);
-
-  const todolist = getFilteredList({
-    list: todos,
-    filterName: "todolist",
-  });
 
   return (
     <div className={toDoListStyle.toDoList}>
