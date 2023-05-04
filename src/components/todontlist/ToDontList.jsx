@@ -5,9 +5,11 @@ import AddForm from "../form/AddForm";
 import { getFilteredList } from "../../utils/filterList";
 import useTodos from "../../hooks/use-todos";
 import useFetchTodos from "../../hooks/use-fetch-todos";
+import useQueryTodos from "../../hooks/use-query-todos";
 
 function ToDontList() {
-  const [todos, dispatch, filteredTodos] = useFetchTodos();
+  const [todos, dispatch, filteredTodos, isLoading] = useQueryTodos();
+  // const [todos, dispatch, filteredTodos] = useFetchTodos();
   // const [todos, dispatch, filteredTodos] = useTodos();
 
   const todontlist = filteredTodos;
@@ -51,6 +53,7 @@ function ToDontList() {
 
   return (
     <div className={toDontListStyle.toDontList}>
+      {isLoading && <div>🥱</div>}
       {todontlist && (
         <List
           list={todontlist}
