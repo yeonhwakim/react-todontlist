@@ -1,16 +1,20 @@
 import { useCallback } from "react";
-import toDontListStyle from "./ToDontList.module.css";
+
 import List from "../list/List";
 import AddForm from "../form/AddForm";
-import { getFilteredList } from "../../utils/filterList";
+
+import toDontListStyle from "./ToDontList.module.css";
+
 import useTodos from "../../hooks/use-todos";
-import useFetchTodos from "../../hooks/use-fetch-todos";
-import useQueryTodos from "../../hooks/use-query-todos";
+// import useFetchTodos from "../../hooks/use-fetch-todos";
+// import useQueryTodos from "../../hooks/use-query-todos";
+
+import { getFilteredList } from "../../utils/filterList";
 
 function ToDontList() {
-  const [todos, dispatch, filteredTodos, isLoading] = useQueryTodos();
+  // const [todos, dispatch, filteredTodos, isLoading] = useQueryTodos();
   // const [todos, dispatch, filteredTodos] = useFetchTodos();
-  // const [todos, dispatch, filteredTodos] = useTodos();
+  const [todos, dispatch, filteredTodos] = useTodos();
 
   const todontlist = filteredTodos;
 
@@ -53,7 +57,7 @@ function ToDontList() {
 
   return (
     <div className={toDontListStyle.toDontList}>
-      {isLoading && <div>🥱</div>}
+      {/* {isLoading && <div>🥱</div>} */}
       {todontlist && (
         <List
           list={todontlist}
