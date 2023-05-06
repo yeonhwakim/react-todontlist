@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import "./Navbar.module.css";
-import navbarStyle from "./Navbar.module.css";
-import { Link, useLocation } from "react-router-dom";
+
 import { DarkModeContext } from "../../contexts/DarkModeContext";
+
+import { Link, useLocation } from "react-router-dom";
+
+import navbarStyle from "./Navbar.module.css";
 
 const tabList = [
   { title: "TO DON'T LIST", path: "/todontlist" },

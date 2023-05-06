@@ -1,10 +1,12 @@
 import React from "react";
+
 import UpdateForm from "../form/UpdateForm";
-import { getDateDiff } from "../../utils/filterList";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import itemStyle from "./Item.module.css";
+
+import { getDateDiff } from "../../utils/filterList";
 
 function Item({
   item: {

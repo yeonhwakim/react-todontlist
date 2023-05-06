@@ -1,8 +1,12 @@
 import { useCallback } from "react";
-import toDoListStyle from "./ToDoList.module.css";
+
 import List from "../list/List";
-import { getFilteredList } from "../../utils/filterList";
+
+import toDoListStyle from "./ToDoList.module.css";
+
 import useTodos from "../../hooks/use-todos";
+
+import { getFilteredList } from "../../utils/filterList";
 
 function ToDoList() {
   const [todos, dispatch, filteredTodos] = useTodos();
