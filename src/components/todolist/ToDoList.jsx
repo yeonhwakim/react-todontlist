@@ -14,6 +14,12 @@ function ToDoList() {
   const todolist = filteredTodos;
 
   const handleReset = (resetId) => {
+    const confirm = confirm("Really?");
+
+    if (!confirm) {
+      return;
+    }
+
     dispatch({ type: "resetStart", resetId });
 
     if (filteredTodos?.length > 3) {
@@ -41,7 +47,12 @@ function ToDoList() {
 
   const handleUpdate = (e, updatedId) => {
     e.preventDefault();
-    dispatch({ type: "updated", updatedId });
+
+    const confirm = confirm("Sure?");
+
+    if (confirm) {
+      dispatch({ type: "updated", updatedId });
+    }
   };
 
   const handleCheck = (e, checkedId) => {
