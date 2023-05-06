@@ -10,7 +10,11 @@ function DoneList() {
   const donelist = filteredTodos;
 
   const handleReset = (resetId) => {
-    dispatch({ type: "resetDone", resetId });
+    const confirm = confirm("Sure?");
+
+    if (confirm) {
+      dispatch({ type: "resetDone", resetId });
+    }
   };
 
   return (
