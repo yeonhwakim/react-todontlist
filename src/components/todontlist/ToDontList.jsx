@@ -23,7 +23,11 @@ function ToDontList() {
   };
 
   const handleDelete = (deletedId) => {
-    dispatch({ type: "deleted", deletedId });
+    const confirm = confirm("Really?");
+
+    if (confirm) {
+      dispatch({ type: "deleted", deletedId });
+    }
   };
 
   const handleUpdateState = (updatedId) => {
@@ -40,11 +44,17 @@ function ToDontList() {
 
   const handleUpdate = (e, updatedId) => {
     e.preventDefault();
-    dispatch({ type: "updated", updatedId });
+
+    const confirm = confirm("Sure?");
+
+    if (confirm) {
+      dispatch({ type: "updated", updatedId });
+    }
   };
 
   const handleCheck = (e, checkedId) => {
     if (getFilteredList({ list: todos, filterName: "todolist" }).length > 2) {
+      alert("Already has three.");
       return;
     }
 
