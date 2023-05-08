@@ -14,9 +14,7 @@ function ToDoList() {
   const todolist = filteredTodos;
 
   const handleReset = (resetId) => {
-    const confirm = confirm("Really?");
-
-    if (!confirm) {
+    if (!window.confirm("Really?")) {
       return;
     }
 
@@ -48,9 +46,7 @@ function ToDoList() {
   const handleUpdate = (e, updatedId) => {
     e.preventDefault();
 
-    const confirm = confirm("Sure?");
-
-    if (confirm) {
+    if (window.confirm("Sure?")) {
       dispatch({ type: "updated", updatedId });
     }
   };

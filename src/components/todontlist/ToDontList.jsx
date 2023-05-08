@@ -23,9 +23,7 @@ function ToDontList() {
   };
 
   const handleDelete = (deletedId) => {
-    const confirm = confirm("Really?");
-
-    if (confirm) {
+    if (window.confirm("Really?")) {
       dispatch({ type: "deleted", deletedId });
     }
   };
@@ -45,9 +43,7 @@ function ToDontList() {
   const handleUpdate = (e, updatedId) => {
     e.preventDefault();
 
-    const confirm = confirm("Sure?");
-
-    if (confirm) {
+    if (window.confirm("Sure?")) {
       dispatch({ type: "updated", updatedId });
     }
   };
