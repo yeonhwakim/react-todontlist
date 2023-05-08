@@ -76,6 +76,8 @@ TO DON'T LIST에 해야 할 일들을 쭉 적는다.
 - useQuery 리턴한 'isLoading' 으로 로딩 랜더링
 - useQuery 실습후 localstorage로 돌려놓기
 
+### netlify buid
+- https://symphonious-truffle-e2fe00.netlify.app
 
 ### 희망 기한
 
