@@ -57,9 +57,12 @@ function ToDontList() {
     dispatch({ type: "checkedStart", checkedId });
   };
 
-  const handleSort = useCallback((sortedTodos) => {
-    dispatch({ type: "sorted", sortedTodos, filterName: "todontlist" });
-  }, []);
+  const handleSort = useCallback(
+    (sortedTodos) => {
+      dispatch({ type: "sorted", sortedTodos, filterName: "todontlist" });
+    },
+    [dispatch]
+  );
 
   return (
     <div className={toDontListStyle.toDontList}>
