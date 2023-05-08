@@ -65,9 +65,12 @@ function ToDoList() {
     });
   };
 
-  const handleSort = useCallback((sortedTodos) => {
-    dispatch({ type: "sorted", sortedTodos, filterName: "todolist" });
-  }, []);
+  const handleSort = useCallback(
+    (sortedTodos) => {
+      dispatch({ type: "sorted", sortedTodos, filterName: "todolist" });
+    },
+    [dispatch]
+  );
 
   return (
     <div className={toDoListStyle.toDoList}>
