@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { Outlet, useLocation, redirect } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import { DarkModeProvider } from "./contexts/DarkModeContext";
 
@@ -16,12 +16,6 @@ import "./App.css";
 export const DarkModeContext = createContext();
 
 function App() {
-  const location = useLocation();
-  console.log(location.pathname);
-  if (location.pathname === "/") {
-    redirect("/todontList");
-  }
-
   return (
     // <QueryClientProvider client={queryClient}>
     <DarkModeProvider>

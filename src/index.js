@@ -1,6 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -16,11 +20,15 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "todontList",
+        path: "",
+        element: <Navigate to="todontlist" />,
+      },
+      {
+        path: "todontlist",
         element: <ToDontList />,
       },
       {
-        path: "todoList",
+        path: "todolist",
         element: <ToDoList />,
       },
       {
